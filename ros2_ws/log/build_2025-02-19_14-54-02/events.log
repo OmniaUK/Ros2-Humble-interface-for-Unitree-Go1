@@ -1,0 +1,163 @@
+[0.000000] (-) TimerEvent: {}
+[0.000170] (udp_bridge_ros2_cpp) JobQueued: {'identifier': 'udp_bridge_ros2_cpp', 'dependencies': OrderedDict()}
+[0.000196] (udp_bridge_ros2_cpp) JobStarted: {'identifier': 'udp_bridge_ros2_cpp'}
+[0.005691] (udp_bridge_ros2_cpp) JobProgress: {'identifier': 'udp_bridge_ros2_cpp', 'progress': 'cmake'}
+[0.006072] (udp_bridge_ros2_cpp) Command: {'cmd': ['/usr/bin/cmake', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp', '-DCMAKE_INSTALL_PREFIX=/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp'], 'cwd': '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'hab75'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/hab75'), ('OLDPWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '2765'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1002/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('COLCON_PREFIX_PATH', '/home/hab75/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'hab75'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hab75'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/hab75/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/smot-pc:@/tmp/.ICE-unix/2712,unix/smot-pc:/tmp/.ICE-unix/2712'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f9df72fe_8e45_4181_9d84_e188448b1e57'), ('XDG_RUNTIME_DIR', '/run/user/1002'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1002/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.113'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1002/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/hab75/ros2_ws/install/udp_bridge_ros2_cpp'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1002/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/hab75/ros2_ws/install/udp_bridge_ros2_cpp:/opt/ros/humble')]), 'shell': False}
+[0.052487] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.099121] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.099469] (-) TimerEvent: {}
+[0.105152] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.167621] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.175416] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.175667] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.176028] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.179027] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.199609] (-) TimerEvent: {}
+[0.246560] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.253495] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.253746] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.254121] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.255976] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.299721] (-) TimerEvent: {}
+[0.379709] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.399833] (-) TimerEvent: {}
+[0.449569] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.483015] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.486779] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.493227] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.499936] (-) TimerEvent: {}
+[0.502965] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.515856] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.550186] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.552113] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.600109] (-) TimerEvent: {}
+[0.620835] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.644651] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.679664] (udp_bridge_ros2_cpp) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.685890] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.700170] (-) TimerEvent: {}
+[0.747209] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.747642] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.800255] (-) TimerEvent: {}
+[0.810700] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.811649] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.859349] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[0.900370] (-) TimerEvent: {}
+[0.922854] (udp_bridge_ros2_cpp) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[0.923088] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/include;$<BUILD_INTERFACE:/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/include>\n'}
+[0.923193] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[0.923761] (udp_bridge_ros2_cpp) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[0.924705] (udp_bridge_ros2_cpp) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[0.924818] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[0.925123] (udp_bridge_ros2_cpp) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[0.926091] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.938506] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Generating done\n'}
+[0.944488] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Build files have been written to: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp\n'}
+[0.952479] (udp_bridge_ros2_cpp) CommandEnded: {'returncode': 0}
+[0.952926] (udp_bridge_ros2_cpp) JobProgress: {'identifier': 'udp_bridge_ros2_cpp', 'progress': 'build'}
+[0.953882] (udp_bridge_ros2_cpp) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp', '--', '-j12', '-l12'], 'cwd': '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'hab75'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/hab75'), ('OLDPWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '2765'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1002/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('COLCON_PREFIX_PATH', '/home/hab75/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'hab75'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hab75'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/hab75/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/smot-pc:@/tmp/.ICE-unix/2712,unix/smot-pc:/tmp/.ICE-unix/2712'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f9df72fe_8e45_4181_9d84_e188448b1e57'), ('XDG_RUNTIME_DIR', '/run/user/1002'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1002/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.113'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1002/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/hab75/ros2_ws/install/udp_bridge_ros2_cpp'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1002/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/hab75/ros2_ws/install/udp_bridge_ros2_cpp:/opt/ros/humble')]), 'shell': False}
+[0.995144] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/examplePublisher.dir/src/examplePublisher.cpp.o\x1b[0m\n'}
+[0.995335] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/udp_bridge.dir/src/udp_bridge.cpp.o\x1b[0m\n'}
+[0.995435] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/exampleSubscriber.dir/src/exampleSubscriber.cpp.o\x1b[0m\n'}
+[1.000455] (-) TimerEvent: {}
+[1.100732] (-) TimerEvent: {}
+[1.201040] (-) TimerEvent: {}
+[1.301311] (-) TimerEvent: {}
+[1.330641] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX executable udp_bridge\x1b[0m\n'}
+[1.401417] (-) TimerEvent: {}
+[1.422725] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 66%] Built target udp_bridge\n'}
+[1.501523] (-) TimerEvent: {}
+[1.601802] (-) TimerEvent: {}
+[1.702076] (-) TimerEvent: {}
+[1.802340] (-) TimerEvent: {}
+[1.902604] (-) TimerEvent: {}
+[2.002874] (-) TimerEvent: {}
+[2.103186] (-) TimerEvent: {}
+[2.203458] (-) TimerEvent: {}
+[2.303731] (-) TimerEvent: {}
+[2.404004] (-) TimerEvent: {}
+[2.504282] (-) TimerEvent: {}
+[2.604543] (-) TimerEvent: {}
+[2.704803] (-) TimerEvent: {}
+[2.805069] (-) TimerEvent: {}
+[2.905401] (-) TimerEvent: {}
+[3.005672] (-) TimerEvent: {}
+[3.105938] (-) TimerEvent: {}
+[3.206213] (-) TimerEvent: {}
+[3.306477] (-) TimerEvent: {}
+[3.406745] (-) TimerEvent: {}
+[3.507012] (-) TimerEvent: {}
+[3.607283] (-) TimerEvent: {}
+[3.707541] (-) TimerEvent: {}
+[3.807798] (-) TimerEvent: {}
+[3.908060] (-) TimerEvent: {}
+[4.008340] (-) TimerEvent: {}
+[4.108598] (-) TimerEvent: {}
+[4.208846] (-) TimerEvent: {}
+[4.309091] (-) TimerEvent: {}
+[4.409332] (-) TimerEvent: {}
+[4.484702] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking CXX executable examplePublisher\x1b[0m\n'}
+[4.509435] (-) TimerEvent: {}
+[4.609703] (-) TimerEvent: {}
+[4.638597] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 83%] Built target examplePublisher\n'}
+[4.709806] (-) TimerEvent: {}
+[4.810070] (-) TimerEvent: {}
+[4.910350] (-) TimerEvent: {}
+[5.010619] (-) TimerEvent: {}
+[5.110864] (-) TimerEvent: {}
+[5.211109] (-) TimerEvent: {}
+[5.311357] (-) TimerEvent: {}
+[5.411606] (-) TimerEvent: {}
+[5.511858] (-) TimerEvent: {}
+[5.612144] (-) TimerEvent: {}
+[5.712393] (-) TimerEvent: {}
+[5.812635] (-) TimerEvent: {}
+[5.912882] (-) TimerEvent: {}
+[6.013141] (-) TimerEvent: {}
+[6.113427] (-) TimerEvent: {}
+[6.213672] (-) TimerEvent: {}
+[6.313917] (-) TimerEvent: {}
+[6.414173] (-) TimerEvent: {}
+[6.514418] (-) TimerEvent: {}
+[6.614664] (-) TimerEvent: {}
+[6.714914] (-) TimerEvent: {}
+[6.815234] (-) TimerEvent: {}
+[6.915598] (-) TimerEvent: {}
+[7.015842] (-) TimerEvent: {}
+[7.116143] (-) TimerEvent: {}
+[7.216430] (-) TimerEvent: {}
+[7.316733] (-) TimerEvent: {}
+[7.417069] (-) TimerEvent: {}
+[7.476599] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable exampleSubscriber\x1b[0m\n'}
+[7.517160] (-) TimerEvent: {}
+[7.617411] (-) TimerEvent: {}
+[7.717659] (-) TimerEvent: {}
+[7.756647] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[100%] Built target exampleSubscriber\n'}
+[7.766268] (udp_bridge_ros2_cpp) CommandEnded: {'returncode': 0}
+[7.766792] (udp_bridge_ros2_cpp) JobProgress: {'identifier': 'udp_bridge_ros2_cpp', 'progress': 'install'}
+[7.774190] (udp_bridge_ros2_cpp) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp'], 'cwd': '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'hab75'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/hab75'), ('OLDPWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '2765'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1002/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('COLCON_PREFIX_PATH', '/home/hab75/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'hab75'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hab75'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/hab75/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/smot-pc:@/tmp/.ICE-unix/2712,unix/smot-pc:/tmp/.ICE-unix/2712'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f9df72fe_8e45_4181_9d84_e188448b1e57'), ('XDG_RUNTIME_DIR', '/run/user/1002'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1002/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.113'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1002/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/hab75/ros2_ws/install/udp_bridge_ros2_cpp'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1002/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/hab75/ros2_ws/install/udp_bridge_ros2_cpp:/opt/ros/humble')]), 'shell': False}
+[7.780288] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.780589] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/udp_bridge\n'}
+[7.780989] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/udp_bridge" to ""\n'}
+[7.781159] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/examplePublisher\n'}
+[7.782146] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/examplePublisher" to ""\n'}
+[7.782224] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/exampleSubscriber\n'}
+[7.784731] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/exampleSubscriber" to ""\n'}
+[7.784984] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/package_run_dependencies/udp_bridge_ros2_cpp\n'}
+[7.785242] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/parent_prefix_path/udp_bridge_ros2_cpp\n'}
+[7.785469] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/ament_prefix_path.sh\n'}
+[7.785698] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/ament_prefix_path.dsv\n'}
+[7.785886] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/path.sh\n'}
+[7.785994] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/path.dsv\n'}
+[7.786210] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.bash\n'}
+[7.786384] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.sh\n'}
+[7.786560] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.zsh\n'}
+[7.786720] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.dsv\n'}
+[7.786926] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/package.dsv\n'}
+[7.787266] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/packages/udp_bridge_ros2_cpp\n'}
+[7.787499] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/cmake/udp_bridge_ros2_cppConfig.cmake\n'}
+[7.787651] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/cmake/udp_bridge_ros2_cppConfig-version.cmake\n'}
+[7.787856] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/package.xml\n'}
+[7.789452] (udp_bridge_ros2_cpp) CommandEnded: {'returncode': 0}
+[7.802931] (udp_bridge_ros2_cpp) JobEnded: {'identifier': 'udp_bridge_ros2_cpp', 'rc': 0}
+[7.803737] (-) EventReactorShutdown: {}
