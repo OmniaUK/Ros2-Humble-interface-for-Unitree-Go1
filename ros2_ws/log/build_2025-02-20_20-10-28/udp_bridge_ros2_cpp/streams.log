@@ -1,0 +1,88 @@
+[0.018s] Invoking command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp -- -j12 -l12
+[0.059s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.254s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.294s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.298s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.306s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.319s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.337s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.381s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.383s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.528s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.601s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.623s] -- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.653s] -- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.681s] -- Found tf2: 0.25.11 (/opt/ros/humble/share/tf2/cmake)
+[0.687s] -- Found tf2_ros: 0.25.11 (/opt/ros/humble/share/tf2_ros/cmake)
+[0.804s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.974s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.975s] -- Configured cppcheck include dirs: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/include;/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/unitree_legged_sdk/include;/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/faceLightSDK_Nano/include;/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/UnitreecameraSDK/include;$<BUILD_INTERFACE:/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/include>
+[0.975s] -- Configured cppcheck exclude dirs and/or files: 
+[0.983s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.996s] -- Added test 'lint_cmake' to check CMake code style
+[1.003s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.055s] -- Added test 'uncrustify' to check C / C++ code style
+[1.056s] -- Configured uncrustify additional arguments: 
+[1.063s] -- Added test 'xmllint' to check XML markup files
+[1.064s] -- Configuring done
+[1.093s] -- Generating done
+[1.104s] -- Build files have been written to: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp
+[1.147s] [35m[1mConsolidate compiler generated dependencies of target udp_bridge[0m
+[1.148s] [35m[1mConsolidate compiler generated dependencies of target examplePublisher[0m
+[1.149s] [35m[1mConsolidate compiler generated dependencies of target exampleSubscriber[0m
+[1.175s] [ 16%] [32mBuilding CXX object CMakeFiles/udp_bridge.dir/src/udp_bridge.cpp.o[0m
+[1.190s] [ 33%] [32mBuilding CXX object CMakeFiles/examplePublisher.dir/src/examplePublisher.cpp.o[0m
+[1.190s] [ 50%] [32mBuilding CXX object CMakeFiles/exampleSubscriber.dir/src/exampleSubscriber.cpp.o[0m
+[2.045s] [ 66%] [32m[1mLinking CXX executable udp_bridge[0m
+[2.252s] [ 66%] Built target udp_bridge
+[8.446s] [ 83%] [32m[1mLinking CXX executable examplePublisher[0m
+[8.767s] [ 83%] Built target examplePublisher
+[13.318s] [100%] [32m[1mLinking CXX executable exampleSubscriber[0m
+[13.807s] [100%] Built target exampleSubscriber
+[13.824s] Invoked command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp -- -j12 -l12
+[13.837s] Invoking command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp
+[13.848s] -- Install configuration: ""
+[13.849s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+[13.849s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/udp_bridge_ros2_cpp
+[13.850s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+[13.850s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk
+[13.850s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/loop.h
+[13.850s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/go1_const.h
+[13.850s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/quadruped.h
+[13.850s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/aliengo_const.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/a1_const.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/safety.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/udp.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/joystick.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/unitree_legged_sdk.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/b1_const.h
+[13.851s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/comm.h
+[13.852s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+[13.852s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/FaceLightClient.h
+[13.852s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/LEDPixel.h
+[13.852s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+[13.852s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/SystemLog.hpp
+[13.852s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/StereoCameraCommon.hpp
+[13.853s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/UnitreeCameraSDK.hpp
+[13.853s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/udp_bridge
+[13.853s] -- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/udp_bridge" to ""
+[13.853s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/examplePublisher
+[13.856s] -- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/examplePublisher" to ""
+[13.856s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/exampleSubscriber
+[13.863s] -- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/exampleSubscriber" to ""
+[13.864s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/package_run_dependencies/udp_bridge_ros2_cpp
+[13.864s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/parent_prefix_path/udp_bridge_ros2_cpp
+[13.864s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/ament_prefix_path.sh
+[13.864s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/ament_prefix_path.dsv
+[13.865s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/path.sh
+[13.865s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/path.dsv
+[13.865s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.bash
+[13.866s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.sh
+[13.866s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.zsh
+[13.866s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.dsv
+[13.866s] -- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/package.dsv
+[13.866s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/packages/udp_bridge_ros2_cpp
+[13.866s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/cmake/udp_bridge_ros2_cppConfig.cmake
+[13.866s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/cmake/udp_bridge_ros2_cppConfig-version.cmake
+[13.867s] -- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/package.xml
+[13.869s] Invoked command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp
