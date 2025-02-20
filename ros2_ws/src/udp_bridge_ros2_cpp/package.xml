@@ -3,7 +3,7 @@
 <package format="3">
   <name>udp_bridge_ros2_cpp</name>
   <version>0.1.0</version>
-  <description>UDP bridge connection to Unitree Go1 leggedSDK and cameraSDK</description>
+  <description>UDP bridge connection to Unitree Go1 and its SDK's</description>
   <maintainer email="hab75@aber.ac.uk">hab75</maintainer>
   <license>AGPL-3.0 license</license>
   
