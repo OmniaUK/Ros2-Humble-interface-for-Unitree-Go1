@@ -1,0 +1,130 @@
+[0.000000] (-) TimerEvent: {}
+[0.000163] (udp_bridge_ros2_cpp) JobQueued: {'identifier': 'udp_bridge_ros2_cpp', 'dependencies': OrderedDict()}
+[0.000248] (unitree_legged_sdk) JobQueued: {'identifier': 'unitree_legged_sdk', 'dependencies': OrderedDict()}
+[0.000316] (udp_bridge_ros2_cpp) JobStarted: {'identifier': 'udp_bridge_ros2_cpp'}
+[0.004712] (unitree_legged_sdk) JobStarted: {'identifier': 'unitree_legged_sdk'}
+[0.008758] (udp_bridge_ros2_cpp) JobProgress: {'identifier': 'udp_bridge_ros2_cpp', 'progress': 'cmake'}
+[0.009968] (udp_bridge_ros2_cpp) JobProgress: {'identifier': 'udp_bridge_ros2_cpp', 'progress': 'build'}
+[0.010020] (udp_bridge_ros2_cpp) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp', '--', '-j12', '-l12'], 'cwd': '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'hab75'), ('ROS_PACKAGE_PATH', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/unitree_legged_sdk/share'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/hab75'), ('OLDPWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '2765'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1002/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('COLCON_PREFIX_PATH', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'hab75'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/unitree_legged_sdk/lib/x86_64-linux-gnu/pkgconfig:/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/unitree_legged_sdk/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hab75'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/hab75/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/smot-pc:@/tmp/.ICE-unix/2712,unix/smot-pc:/tmp/.ICE-unix/2712'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/47561adf_25fb_4d6e_91a2_f1b88058c1e8'), ('XDG_RUNTIME_DIR', '/run/user/1002'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1002/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.414'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1002/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1002/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.013082] (unitree_legged_sdk) JobProgress: {'identifier': 'unitree_legged_sdk', 'progress': 'cmake'}
+[0.013562] (unitree_legged_sdk) JobProgress: {'identifier': 'unitree_legged_sdk', 'progress': 'build'}
+[0.013846] (unitree_legged_sdk) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk', '--', '-j12', '-l12'], 'cwd': '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_GB:en'), ('USER', 'hab75'), ('ROS_PACKAGE_PATH', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/unitree_legged_sdk/share'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/hab75'), ('OLDPWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '2765'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1002/bus'), ('COLORTERM', 'truecolor'), ('_colcon_cd_root', '/opt/ros/humble/'), ('COLCON_PREFIX_PATH', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'hab75'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('PKG_CONFIG_PATH', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/unitree_legged_sdk/lib/x86_64-linux-gnu/pkgconfig:/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/unitree_legged_sdk/lib/pkgconfig'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'hab75'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '1'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/hab75/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/smot-pc:@/tmp/.ICE-unix/2712,unix/smot-pc:/tmp/.ICE-unix/2712'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/47561adf_25fb_4d6e_91a2_f1b88058c1e8'), ('XDG_RUNTIME_DIR', '/run/user/1002'), ('DISPLAY', ':1'), ('LANG', 'en_GB.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1002/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.414'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1002/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1002/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.047639] (unitree_legged_sdk) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target example_walk\x1b[0m\n'}
+[0.047857] (unitree_legged_sdk) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target example_velocity\x1b[0m\n'}
+[0.047957] (unitree_legged_sdk) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target example_torque\x1b[0m\n'}
+[0.049721] (unitree_legged_sdk) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target example_position\x1b[0m\n'}
+[0.050894] (unitree_legged_sdk) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target example_joystick\x1b[0m\n'}
+[0.057129] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/udp_bridge.dir/src/udp_bridge.cpp.o\x1b[0m\n'}
+[0.061964] (unitree_legged_sdk) StdoutLine: {'line': b'[ 10%] \x1b[32m\x1b[1mLinking CXX executable example_walk\x1b[0m\n'}
+[0.062351] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/exampleSubscriber.dir/src/exampleSubscriber.cpp.o\x1b[0m\n'}
+[0.062777] (unitree_legged_sdk) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking CXX executable example_velocity\x1b[0m\n'}
+[0.062945] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/examplePublisher.dir/src/examplePublisher.cpp.o\x1b[0m\n'}
+[0.064977] (unitree_legged_sdk) StdoutLine: {'line': b'[ 30%] \x1b[32m\x1b[1mLinking CXX executable example_joystick\x1b[0m\n'}
+[0.066344] (unitree_legged_sdk) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking CXX executable example_torque\x1b[0m\n'}
+[0.068267] (unitree_legged_sdk) StdoutLine: {'line': b'[ 50%] \x1b[32m\x1b[1mLinking CXX executable example_position\x1b[0m\n'}
+[0.099491] (-) TimerEvent: {}
+[0.151681] (unitree_legged_sdk) StderrLine: {'line': b"/usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object\n"}
+[0.151954] (unitree_legged_sdk) StderrLine: {'line': b'/usr/bin/ld: final link failed: bad value\n'}
+[0.153377] (unitree_legged_sdk) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[0.154054] (unitree_legged_sdk) StderrLine: {'line': b"/usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object\n"}
+[0.154256] (unitree_legged_sdk) StderrLine: {'line': b'/usr/bin/ld: final link failed: bad value\n'}
+[0.155783] (unitree_legged_sdk) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/example_torque.dir/build.make:97: example_torque] Error 1\n'}
+[0.155965] (unitree_legged_sdk) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[0.156142] (unitree_legged_sdk) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:143: CMakeFiles/example_torque.dir/all] Error 2\n'}
+[0.156261] (unitree_legged_sdk) StderrLine: {'line': b'gmake[1]: *** Waiting for unfinished jobs....\n'}
+[0.157505] (unitree_legged_sdk) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/example_walk.dir/build.make:97: example_walk] Error 1\n'}
+[0.157710] (unitree_legged_sdk) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:169: CMakeFiles/example_walk.dir/all] Error 2\n'}
+[0.188115] (unitree_legged_sdk) StderrLine: {'line': b"/usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object\n"}
+[0.188343] (unitree_legged_sdk) StderrLine: {'line': b'/usr/bin/ld: final link failed: bad value\n'}
+[0.189886] (unitree_legged_sdk) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[0.191678] (unitree_legged_sdk) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/example_velocity.dir/build.make:97: example_velocity] Error 1\n'}
+[0.191907] (unitree_legged_sdk) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:117: CMakeFiles/example_velocity.dir/all] Error 2\n'}
+[0.193758] (unitree_legged_sdk) StderrLine: {'line': b"/usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object\n"}
+[0.193894] (unitree_legged_sdk) StderrLine: {'line': b'/usr/bin/ld: final link failed: bad value\n'}
+[0.194943] (unitree_legged_sdk) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[0.196630] (unitree_legged_sdk) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/example_position.dir/build.make:97: example_position] Error 1\n'}
+[0.196869] (unitree_legged_sdk) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:91: CMakeFiles/example_position.dir/all] Error 2\n'}
+[0.197944] (unitree_legged_sdk) StderrLine: {'line': b"/usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object\n"}
+[0.198109] (unitree_legged_sdk) StderrLine: {'line': b'/usr/bin/ld: final link failed: bad value\n'}
+[0.199566] (-) TimerEvent: {}
+[0.199764] (unitree_legged_sdk) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[0.201224] (unitree_legged_sdk) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/example_joystick.dir/build.make:97: example_joystick] Error 1\n'}
+[0.201508] (unitree_legged_sdk) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:195: CMakeFiles/example_joystick.dir/all] Error 2\n'}
+[0.201778] (unitree_legged_sdk) StderrLine: {'line': b'gmake: *** [Makefile:136: all] Error 2\n'}
+[0.203673] (unitree_legged_sdk) CommandEnded: {'returncode': 2}
+[0.217378] (unitree_legged_sdk) JobEnded: {'identifier': 'unitree_legged_sdk', 'rc': 2}
+[0.299697] (-) TimerEvent: {}
+[0.399955] (-) TimerEvent: {}
+[0.432344] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX executable udp_bridge\x1b[0m\n'}
+[0.500089] (-) TimerEvent: {}
+[0.523121] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 66%] Built target udp_bridge\n'}
+[0.600138] (-) TimerEvent: {}
+[0.700384] (-) TimerEvent: {}
+[0.800722] (-) TimerEvent: {}
+[0.900996] (-) TimerEvent: {}
+[1.001268] (-) TimerEvent: {}
+[1.101567] (-) TimerEvent: {}
+[1.201837] (-) TimerEvent: {}
+[1.302170] (-) TimerEvent: {}
+[1.402460] (-) TimerEvent: {}
+[1.502756] (-) TimerEvent: {}
+[1.603039] (-) TimerEvent: {}
+[1.703369] (-) TimerEvent: {}
+[1.803648] (-) TimerEvent: {}
+[1.903966] (-) TimerEvent: {}
+[2.004216] (-) TimerEvent: {}
+[2.104533] (-) TimerEvent: {}
+[2.204850] (-) TimerEvent: {}
+[2.305140] (-) TimerEvent: {}
+[2.405418] (-) TimerEvent: {}
+[2.505712] (-) TimerEvent: {}
+[2.605995] (-) TimerEvent: {}
+[2.706283] (-) TimerEvent: {}
+[2.806597] (-) TimerEvent: {}
+[2.906904] (-) TimerEvent: {}
+[3.007146] (-) TimerEvent: {}
+[3.107411] (-) TimerEvent: {}
+[3.207715] (-) TimerEvent: {}
+[3.308019] (-) TimerEvent: {}
+[3.408307] (-) TimerEvent: {}
+[3.508575] (-) TimerEvent: {}
+[3.608841] (-) TimerEvent: {}
+[3.700378] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 83%] \x1b[32m\x1b[1mLinking CXX executable examplePublisher\x1b[0m\n'}
+[3.708947] (-) TimerEvent: {}
+[3.809232] (-) TimerEvent: {}
+[3.856749] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[ 83%] Built target examplePublisher\n'}
+[3.909347] (-) TimerEvent: {}
+[4.009602] (-) TimerEvent: {}
+[4.109863] (-) TimerEvent: {}
+[4.210162] (-) TimerEvent: {}
+[4.310442] (-) TimerEvent: {}
+[4.410721] (-) TimerEvent: {}
+[4.511003] (-) TimerEvent: {}
+[4.611276] (-) TimerEvent: {}
+[4.711554] (-) TimerEvent: {}
+[4.811831] (-) TimerEvent: {}
+[4.912111] (-) TimerEvent: {}
+[5.012388] (-) TimerEvent: {}
+[5.112671] (-) TimerEvent: {}
+[5.212951] (-) TimerEvent: {}
+[5.313248] (-) TimerEvent: {}
+[5.413526] (-) TimerEvent: {}
+[5.513806] (-) TimerEvent: {}
+[5.614093] (-) TimerEvent: {}
+[5.714376] (-) TimerEvent: {}
+[5.814659] (-) TimerEvent: {}
+[5.914919] (-) TimerEvent: {}
+[6.015207] (-) TimerEvent: {}
+[6.115484] (-) TimerEvent: {}
+[6.215787] (-) TimerEvent: {}
+[6.316103] (-) TimerEvent: {}
+[6.416385] (-) TimerEvent: {}
+[6.516675] (-) TimerEvent: {}
+[6.616923] (-) TimerEvent: {}
+[6.628224] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable exampleSubscriber\x1b[0m\n'}
+[6.717049] (-) TimerEvent: {}
+[6.817382] (-) TimerEvent: {}
+[6.910560] (udp_bridge_ros2_cpp) StdoutLine: {'line': b'[100%] Built target exampleSubscriber\n'}
+[6.917469] (-) TimerEvent: {}
+[6.919902] (udp_bridge_ros2_cpp) JobEnded: {'identifier': 'udp_bridge_ros2_cpp', 'rc': 'SIGINT'}
+[6.930422] (-) EventReactorShutdown: {}

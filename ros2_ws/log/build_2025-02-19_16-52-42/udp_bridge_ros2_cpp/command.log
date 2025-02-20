@@ -1,0 +1,1 @@
+Invoking command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp -- -j12 -l12

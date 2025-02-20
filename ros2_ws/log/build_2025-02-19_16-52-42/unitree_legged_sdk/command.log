@@ -1,0 +1,2 @@
+Invoking command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk': /usr/bin/cmake --build /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk -- -j12 -l12
+Invoked command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk' returned '2': /usr/bin/cmake --build /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk -- -j12 -l12

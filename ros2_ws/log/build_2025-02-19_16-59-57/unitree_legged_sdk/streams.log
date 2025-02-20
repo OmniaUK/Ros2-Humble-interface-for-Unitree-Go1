@@ -1,0 +1,33 @@
+[0.011s] Invoking command in '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk': /usr/bin/cmake --build /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/unitree_legged_sdk -- -j12 -l12
+[0.056s] [ 10%] [32m[1mLinking CXX executable example_walk[0m
+[0.057s] [ 20%] [32m[1mLinking CXX executable example_velocity[0m
+[0.057s] [ 30%] [32m[1mLinking CXX executable example_joystick[0m
+[0.057s] [ 40%] [32m[1mLinking CXX executable example_torque[0m
+[0.061s] [ 50%] [32m[1mLinking CXX executable example_position[0m
+[0.153s] /usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object
+[0.153s] /usr/bin/ld: final link failed: bad value
+[0.154s] collect2: error: ld returned 1 exit status
+[0.155s] /usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object
+[0.155s] /usr/bin/ld: final link failed: bad value
+[0.155s] /usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object
+[0.155s] /usr/bin/ld: final link failed: bad value
+[0.156s] /usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object
+[0.156s] /usr/bin/ld: final link failed: bad value
+[0.157s] gmake[2]: *** [CMakeFiles/example_velocity.dir/build.make:97: example_velocity] Error 1
+[0.157s] collect2: error: ld returned 1 exit status
+[0.157s] collect2: error: ld returned 1 exit status
+[0.157s] gmake[1]: *** [CMakeFiles/Makefile2:117: CMakeFiles/example_velocity.dir/all] Error 2
+[0.157s] gmake[1]: *** Waiting for unfinished jobs....
+[0.158s] collect2: error: ld returned 1 exit status
+[0.159s] gmake[2]: *** [CMakeFiles/example_joystick.dir/build.make:97: example_joystick] Error 1
+[0.159s] gmake[2]: *** [CMakeFiles/example_walk.dir/build.make:97: example_walk] Error 1
+[0.159s] gmake[1]: *** [CMakeFiles/Makefile2:195: CMakeFiles/example_joystick.dir/all] Error 2
+[0.159s] gmake[1]: *** [CMakeFiles/Makefile2:169: CMakeFiles/example_walk.dir/all] Error 2
+[0.159s] gmake[2]: *** [CMakeFiles/example_torque.dir/build.make:97: example_torque] Error 1
+[0.160s] gmake[1]: *** [CMakeFiles/Makefile2:143: CMakeFiles/example_torque.dir/all] Error 2
+[0.172s] /usr/bin/ld: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a(loop.cpp.o): relocation R_X86_64_PC32 against undefined hidden symbol `_ZTCN5boost10wrapexceptINS_17bad_function_callEEE0_NS_16exception_detail10clone_implINS3_19error_info_injectorIS1_EEEE' can not be used when making a PIE object
+[0.173s] /usr/bin/ld: final link failed: bad value
+[0.174s] collect2: error: ld returned 1 exit status
+[0.175s] gmake[2]: *** [CMakeFiles/example_position.dir/build.make:97: example_position] Error 1
+[0.176s] gmake[1]: *** [CMakeFiles/Makefile2:91: CMakeFiles/example_position.dir/all] Error 2
+[0.176s] gmake: *** [Makefile:136: all] Error 2
