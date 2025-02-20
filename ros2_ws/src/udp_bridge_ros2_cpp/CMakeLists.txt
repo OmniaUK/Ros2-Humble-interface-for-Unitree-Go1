@@ -12,9 +12,6 @@ SET(EXTRA_LIBS
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
@@ -22,12 +19,19 @@ find_package(nav_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
 
 # Linking Unitree's SDK's
 link_directories(${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/${ARCH})
+link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/${ARCH})
+link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/${ARCH})
 
 # Include SDK's header files
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include)
+include_directories(include ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include)
+include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
 
 
 add_executable(udp_bridge src/udp_bridge.cpp)
@@ -45,10 +49,12 @@ ament_target_dependencies(examplePublisher rclcpp std_msgs)
 ament_target_dependencies(exampleSubscriber rclcpp std_msgs)
 ament_target_dependencies(udp_bridge rclcpp std_msgs)
 
+# Install includes before packages
 install(
   DIRECTORY include 
   ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include 
-  #${CMAKE_SOURCE_DIR}/utils/faceLightSDK_Nano/include
+  ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include
+  ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include
   DESTINATION include
 )
 
