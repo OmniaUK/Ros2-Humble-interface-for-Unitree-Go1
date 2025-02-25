@@ -57,108 +57,118 @@ void Custom::RobotControl()
   cmd.velocity[1] = 0.0f;
   cmd.yawSpeed = 0.0f;
   cmd.reserve = 0;
+// Moving the head about on the spot
+  // if (motiontime > 0 && motiontime < 1000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.euler[0] = -0.3;
+  // }
+  // if (motiontime > 1000 && motiontime < 2000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.euler[0] = 0.3;
+  // }
+  // if (motiontime > 2000 && motiontime < 3000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.euler[1] = -0.2;
+  // }
+  // if (motiontime > 3000 && motiontime < 4000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.euler[1] = 0.2;
+  // }
+  // if (motiontime > 4000 && motiontime < 5000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.euler[2] = -0.2;
+  // }
+  // if (motiontime > 5000 && motiontime < 6000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.euler[2] = 0.2;
+  // }
+  // if (motiontime > 6000 && motiontime < 7000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.bodyHeight = -0.2;
+  // }
+  // if (motiontime > 7000 && motiontime < 8000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.bodyHeight = 0.1;
+  // }
+  // if (motiontime > 8000 && motiontime < 9000)
+  // {
+  //   cmd.mode = 1;
+  //   cmd.bodyHeight = 0.0;
+  // }
+  
+  // sit down
+  // if (motiontime > 9000 && motiontime < 11000)
+  // {
+  //   cmd.mode = 5;
+  // }
+  // if (motiontime > 11000 && motiontime < 13000)
+  // {
+  //   cmd.mode = 7;
+  // }
+  // if (motiontime > 13000 && motiontime < 15000)
+  // {
+  //   cmd.mode = 6;
+  // }
 
-  if (motiontime > 0 && motiontime < 1000)
-  {
-    cmd.mode = 1;
-    cmd.euler[0] = -0.3;
-  }
-  if (motiontime > 1000 && motiontime < 2000)
-  {
-    cmd.mode = 1;
-    cmd.euler[0] = 0.3;
-  }
-  if (motiontime > 2000 && motiontime < 3000)
-  {
-    cmd.mode = 1;
-    cmd.euler[1] = -0.2;
-  }
-  if (motiontime > 3000 && motiontime < 4000)
-  {
-    cmd.mode = 1;
-    cmd.euler[1] = 0.2;
-  }
-  if (motiontime > 4000 && motiontime < 5000)
-  {
-    cmd.mode = 1;
-    cmd.euler[2] = -0.2;
-  }
-  if (motiontime > 5000 && motiontime < 6000)
-  {
-    cmd.mode = 1;
-    cmd.euler[2] = 0.2;
-  }
-  if (motiontime > 6000 && motiontime < 7000)
-  {
-    cmd.mode = 1;
-    cmd.bodyHeight = -0.2;
-  }
-  if (motiontime > 7000 && motiontime < 8000)
-  {
-    cmd.mode = 1;
-    cmd.bodyHeight = 0.1;
-  }
-  if (motiontime > 8000 && motiontime < 9000)
-  {
-    cmd.mode = 1;
-    cmd.bodyHeight = 0.0;
-  }
-  if (motiontime > 9000 && motiontime < 11000)
-  {
-    cmd.mode = 5;
-  }
-  if (motiontime > 11000 && motiontime < 13000)
-  {
-    cmd.mode = 7;
-  }
-  if (motiontime > 13000 && motiontime < 15000)
-  {
-    cmd.mode = 6;
-  }
-  if (motiontime > 15000 && motiontime < 16000)
-  {
-    cmd.mode = 0;
-  }
-  if (motiontime > 16000 && motiontime < 20000)
-  {
-    cmd.mode = 2;
-    cmd.gaitType = 2;
-    cmd.velocity[0] = 0.4f;
-    cmd.yawSpeed = 2;
-    cmd.footRaiseHeight = 0.1;
-  }
-  if (motiontime > 20000 && motiontime < 22000)
-  {
-    cmd.mode = 0;
-    cmd.velocity[0] = 0;
-  }
-  if (motiontime > 22000 && motiontime < 26000)
-  {
-    cmd.mode = 2;
-    cmd.gaitType = 1;
-    cmd.velocity[0] = 0.2f;
-    cmd.bodyHeight = 0.1;
-  }
+  // stand back up
+  // if (motiontime > 15000 && motiontime < 16000)
+  // {
+  //   cmd.mode = 0;
+  // }
+
+
+  // Spin on the spot
+  // if (motiontime > 16000 && motiontime < 20000)
+  // {
+  //   cmd.mode = 2;
+  //   cmd.gaitType = 2;
+  //   cmd.velocity[0] = 0.4f;
+  //   cmd.yawSpeed = 2;
+  //   cmd.footRaiseHeight = 0.1;
+  // }
+  
+  // move forward a small bit
+  // if (motiontime > 20000 && motiontime < 22000)
+  // {
+  //   cmd.mode = 0;
+  //   cmd.velocity[0] = 0;
+  // }
+  // if (motiontime > 22000 && motiontime < 26000)
+  // {
+  //   cmd.mode = 2;
+  //   cmd.gaitType = 1;
+  //   cmd.velocity[0] = 0.2f;
+  //   cmd.bodyHeight = 0.1;
+  // }
 
   // straightHand mode usage
-  if (motiontime > 26000 && motiontime < 27000)
-  {
-    cmd.mode = 1;
-  }
-  if (motiontime > 27000 && motiontime < 35000)
-  {
-    cmd.mode = 11;
-  }
+  // if (motiontime > 26000 && motiontime < 27000)
+  // {
+  //   cmd.mode = 1;
+  // }
+  // if (motiontime > 27000 && motiontime < 35000)
+  // {
+  //   cmd.mode = 11;
+  // }
 
-  // jumpYaw mode usage
-  if (motiontime > 35000 && motiontime < 36000)
-  {
-    cmd.mode = 1;
-  }
-  if (motiontime > 36000 && motiontime < 37000)
-  {
-    cmd.mode = 10;
-  }
+  //  Jump left
+  // // jumpYaw mode usage
+  // if (motiontime > 35000 && motiontime < 36000)
+  // {
+  //   cmd.mode = 1;
+  // }
+  // if (motiontime > 36000 && motiontime < 37000)
+  // {
+    cmd.mode = 7;
+  // }
 
   udp.SetSend(cmd);
 }

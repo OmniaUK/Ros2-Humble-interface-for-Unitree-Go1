@@ -1,0 +1,5 @@
+[0m-- CMAKE_SYSTEM_PROCESSOR: [0m
+gmake[2]: *** No rule to make target '/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/unitree_legged_sdk/lib/cpp//libunitree_legged_sdk.a', needed by 'udp_bridge'. Stop.
+gmake[1]: *** [CMakeFiles/Makefile2:141: CMakeFiles/udp_bridge.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
