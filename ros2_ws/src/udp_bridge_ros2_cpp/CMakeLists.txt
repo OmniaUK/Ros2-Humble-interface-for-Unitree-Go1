@@ -1,12 +1,12 @@
 # check arch and os 
-# from SDK CMake file
-message("-- CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
-if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "x86_64.*")
-  set(ARCH amd64)
-endif()
-if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "aarch64.*")
-  set(ARCH arm64)
-endif()
+# from SDK CMake file (NOT IN USE)
+# message("-- CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
+# if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "x86_64.*")
+#   set(ARCH amd64)
+# endif()
+# if("${CMAKE_SYSTEM_PROCESSOR}" MATCHES "aarch64.*")
+#   set(ARCH arm64)
+# endif()
 
 cmake_minimum_required(VERSION 3.8)
 project(udp_bridge_ros2_cpp)
