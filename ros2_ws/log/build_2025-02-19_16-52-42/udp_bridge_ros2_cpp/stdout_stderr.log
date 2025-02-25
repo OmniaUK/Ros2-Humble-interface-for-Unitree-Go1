@@ -1,9 +1,0 @@
-[ 16%] [32mBuilding CXX object CMakeFiles/udp_bridge.dir/src/udp_bridge.cpp.o[0m
-[ 33%] [32mBuilding CXX object CMakeFiles/exampleSubscriber.dir/src/exampleSubscriber.cpp.o[0m
-[ 50%] [32mBuilding CXX object CMakeFiles/examplePublisher.dir/src/examplePublisher.cpp.o[0m
-[ 66%] [32m[1mLinking CXX executable udp_bridge[0m
-[ 66%] Built target udp_bridge
-[ 83%] [32m[1mLinking CXX executable examplePublisher[0m
-[ 83%] Built target examplePublisher
-[100%] [32m[1mLinking CXX executable exampleSubscriber[0m
-[100%] Built target exampleSubscriber

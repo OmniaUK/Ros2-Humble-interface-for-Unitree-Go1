@@ -1,9 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target exampleSubscriber[0m
-[35m[1mConsolidate compiler generated dependencies of target udp_bridge[0m
-[35m[1mConsolidate compiler generated dependencies of target examplePublisher[0m
-[ 33%] Built target udp_bridge
-[ 66%] Built target exampleSubscriber
-[100%] Built target examplePublisher
--- Install configuration: ""
--- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
--- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/udp_bridge_ros2_cpp

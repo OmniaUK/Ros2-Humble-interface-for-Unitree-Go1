@@ -1,0 +1,149 @@
+[0m-- CMAKE_SYSTEM_PROCESSOR: [0m
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found nav_msgs: 4.2.4 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found sensor_msgs: 4.2.4 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found tf2: 0.25.11 (/opt/ros/humble/share/tf2/cmake)
+-- Found tf2_ros: 0.25.11 (/opt/ros/humble/share/tf2_ros/cmake)
+-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/include;/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/unitree_legged_sdk/include;/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/faceLightSDK_Nano/include;/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/UnitreecameraSDK/include;$<BUILD_INTERFACE:/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/include>
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/build/udp_bridge_ros2_cpp
+[ 16%] [32mBuilding CXX object CMakeFiles/udp_bridge.dir/src/udp_bridge.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/examplePublisher.dir/src/examplePublisher.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/exampleSubscriber.dir/src/exampleSubscriber.cpp.o[0m
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::levelFlag[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+   27 |   HighCmd cmd = {0[01;35m[K}[m[K;
+      |                   [01;35m[K^[m[K
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::frameReserve[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::SN[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::version[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::bandWidth[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::mode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::gaitType[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::speedLevel[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::footRaiseHeight[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::bodyHeight[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::position[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::euler[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::velocity[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::yawSpeed[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::bms[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::led[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::wirelessRemote[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::reserve[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:27:19:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighCmd::crc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::levelFlag[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+   28 |   HighState state = {0[01;35m[K}[m[K;
+      |                       [01;35m[K^[m[K
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::frameReserve[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::SN[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::version[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::bandWidth[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::imu[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::motorState[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::bms[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::footForce[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::footForceEst[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::mode[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::progress[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::gaitType[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::footRaiseHeight[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::position[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::bodyHeight[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::velocity[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::yawSpeed[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::rangeObstacle[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::footPosition2Body[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::footSpeed2Body[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::wirelessRemote[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::reserve[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[01m[K/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/src/udp_bridge.cpp:28:23:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[KUNITREE_LEGGED_SDK::HighState::crc[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmissing-field-initializers-Wmissing-field-initializers]8;;[m[K]
+[ 66%] [32m[1mLinking CXX executable udp_bridge[0m
+[ 66%] Built target udp_bridge
+[ 83%] [32m[1mLinking CXX executable examplePublisher[0m
+[ 83%] Built target examplePublisher
+[100%] [32m[1mLinking CXX executable exampleSubscriber[0m
+[100%] Built target exampleSubscriber
+-- Install configuration: ""
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/udp_bridge_ros2_cpp
+-- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/loop.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/go1_const.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/quadruped.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/aliengo_const.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/a1_const.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/safety.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/udp.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/joystick.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/unitree_legged_sdk.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/b1_const.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/unitree_legged_sdk/comm.h
+-- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/FaceLightClient.h
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/LEDPixel.h
+-- Up-to-date: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/SystemLog.hpp
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/StereoCameraCommon.hpp
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/include/include/UnitreeCameraSDK.hpp
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/udp_bridge
+-- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/udp_bridge" to ""
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/examplePublisher
+-- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/examplePublisher" to ""
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/exampleSubscriber
+-- Set runtime path of "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/lib/udp_bridge_ros2_cpp/exampleSubscriber" to ""
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/package_run_dependencies/udp_bridge_ros2_cpp
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/parent_prefix_path/udp_bridge_ros2_cpp
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/ament_prefix_path.sh
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/ament_prefix_path.dsv
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/path.sh
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/environment/path.dsv
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.bash
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.sh
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.zsh
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/local_setup.dsv
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/package.dsv
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/ament_index/resource_index/packages/udp_bridge_ros2_cpp
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/cmake/udp_bridge_ros2_cppConfig.cmake
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/cmake/udp_bridge_ros2_cppConfig-version.cmake
+-- Installing: /home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/install/udp_bridge_ros2_cpp/share/udp_bridge_ros2_cpp/package.xml

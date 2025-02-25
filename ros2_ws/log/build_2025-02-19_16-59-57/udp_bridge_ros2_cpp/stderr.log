@@ -1,6 +1,0 @@
-[31mCMake Error at cmake_install.cmake:46 (file):
-  file INSTALL cannot find
-  "/home/hab75/Ros2-Humble-interface-for-Unitree-Go1/ros2_ws/src/udp_bridge_ros2_cpp/sdk/unitree_legged_sdk/include":
-  No such file or directory.
-
-[0m
