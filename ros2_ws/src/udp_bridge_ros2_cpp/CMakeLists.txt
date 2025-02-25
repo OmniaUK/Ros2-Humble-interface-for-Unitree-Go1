@@ -34,8 +34,8 @@ find_package(tf2_ros REQUIRED)
 
 # Linking Unitree's SDK's
 link_directories(${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64)
-link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/${ARCH})
-link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/${ARCH})
+link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib)
+link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64)
 
 # Include SDK's header files
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include)
@@ -57,10 +57,6 @@ target_compile_features(udp_bridge PUBLIC c_std_99 cxx_std_17)  # Require C99 an
 ament_target_dependencies(examplePublisher rclcpp std_msgs)
 ament_target_dependencies(exampleSubscriber rclcpp std_msgs)
 ament_target_dependencies(udp_bridge rclcpp std_msgs)
-
-# install(DIRECTORY sdk/unit/lib/cpp/amd64/
-#   DESTINATION lib/unitree
-#   USE_SOURCE_PERMISSIONS)
 
 # Install includes before packages
 install(
