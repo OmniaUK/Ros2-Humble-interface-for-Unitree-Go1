@@ -1,3 +1,4 @@
+# A CMake file for a Ros interface to the unitree Go1
 # Auther: Harry Bowker (Hab75) / OmniaUK @ Github
 # Version 1.0
 # Source used: https://docs.ros.org/en/humble/How-To-Guides/Ament-CMake-Documentation.html
