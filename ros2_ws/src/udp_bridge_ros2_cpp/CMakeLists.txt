@@ -1,3 +1,9 @@
+# Auther: Harry Bowker (Hab75) / OmniaUK @ Github
+# Version 1.0
+# Source used: https://docs.ros.org/en/humble/How-To-Guides/Ament-CMake-Documentation.html
+#              With legged_sdk CMake used as additional resource.
+
+
 # check arch and os 
 # from SDK CMake file (NOT IN USE)
 # message("-- CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
@@ -46,6 +52,7 @@ include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
 add_executable(udp_bridge src/udp_bridge.cpp)
 add_executable(examplePublisher src/examplePublisher.cpp)
 add_executable(exampleSubscriber src/exampleSubscriber.cpp)
+#add_executable(cmdMode src/cmdMode.cpp)
 
 
 include_directories(include)
@@ -57,6 +64,7 @@ target_compile_features(udp_bridge PUBLIC c_std_99 cxx_std_17)  # Require C99 an
 ament_target_dependencies(examplePublisher rclcpp std_msgs)
 ament_target_dependencies(exampleSubscriber rclcpp std_msgs)
 ament_target_dependencies(udp_bridge rclcpp std_msgs)
+#ament_target_dependencies(cmdMode rclcpp std_msgs)
 
 # Install includes before packages
 install(
@@ -69,6 +77,7 @@ install(
 
 install(TARGETS 
   udp_bridge
+#  cmdMode
   examplePublisher
   exampleSubscriber
   DESTINATION lib/${PROJECT_NAME})
