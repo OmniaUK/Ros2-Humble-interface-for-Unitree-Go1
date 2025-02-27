@@ -1,6 +1,5 @@
-/**********************************************************************
- Copyright (c) 2020-2023, Unitree Robotics.Co.Ltd. All rights reserved.
-***********************************************************************/
+/* This is an example file to test the UDP control
+*/
 
 #include "unitree_legged_sdk/unitree_legged_sdk.h"
 #include <math.h>
@@ -152,11 +151,11 @@ void Custom::RobotControl()
   // straightHand mode usage
   // if (motiontime > 26000 && motiontime < 27000)
   // {
-  //   cmd.mode = 1;
+     cmd.mode = 1;
   // }
   // if (motiontime > 27000 && motiontime < 35000)
   // {
-  //   cmd.mode = 11;
+    cmd.mode = 11;
   // }
 
   //  Jump left
@@ -167,7 +166,7 @@ void Custom::RobotControl()
   // }
   // if (motiontime > 36000 && motiontime < 37000)
   // {
-    cmd.mode = 7;
+  //  cmd.mode = 7;
   // }
 
   udp.SetSend(cmd);
