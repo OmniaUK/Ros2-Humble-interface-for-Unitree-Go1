@@ -609,3 +609,4 @@ ros2_ws/src/udp_bridge_ros2_cpp/unitree_ros_to_real-master/unitree_legged_real/s
 ros2_ws/src/udp_bridge_ros2_cpp/unitree_ros_to_real-master/unitree_legged_real/src/exe/ros_udp.cpp
 ros2_ws/src/udp_bridge_ros2_cpp/unitree_ros_to_real-master/unitree_legged_real/src/exe/state_sub.cpp
 ros2_ws/src/udp_bridge_ros2_cpp/unitree_ros_to_real-master/unitree_legged_real/src/exe/twist_sub.cpp
+ros2_ws/log/latest_build
