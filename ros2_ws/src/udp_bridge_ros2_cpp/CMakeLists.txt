@@ -22,7 +22,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-SET(EXTRA_LIBS ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
+SET(LEGGED_LIB ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
+SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
 
 
 
@@ -85,7 +86,8 @@ install(TARGETS
 
 
 target_link_libraries(udp_bridge
-  ${EXTRA_LIBS}
+  ${LEGGED_LIB}
+  ${FACELED_LIB}
   pthread
   rt
 )
