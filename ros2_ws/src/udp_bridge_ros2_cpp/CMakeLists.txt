@@ -40,6 +40,25 @@ find_package(tf2_ros REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+
+# .msg Includes Source: https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/BmsCmd.msg"
+  "msg/BmsState.msg"
+  "msg/Cartesian.msg"
+  "msg/HighCmd.msg"
+  "msg/HighState.msg"
+  "msg/IMU.msg"
+  "msg/LED.msg"
+  "msg/LowCmd.msg"
+  "msg/LowState.msg"
+  "msg/MotorState.msg"
+  "msg/MotorCmd.msg"
+  DEPENDENCIES # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
+)
+
 # Linking Unitree's SDK's
 link_directories(${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib)
