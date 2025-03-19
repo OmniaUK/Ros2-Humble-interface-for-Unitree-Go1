@@ -27,8 +27,8 @@ public:
 
   Safety safe;
   UDP udp;
-  HighCmd cmd = {0};
-  HighState state = {0};
+  HighCmd cmd = {};
+  HighState state = {};
   int motiontime = 0;
   float dt = 0.002; // 0.001~0.01
 };
