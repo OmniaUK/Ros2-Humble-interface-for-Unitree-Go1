@@ -137,6 +137,7 @@ private:
   /*
   * BMS Data publisher
   * Takes bms data and updates the msg with latest battery sensor data
+  * WARNING: Batterys will require to be on compatable firmware versions to the robot for data. 
   */
   void bms_callback()
   {
@@ -144,6 +145,7 @@ private:
     // Create an instance of the BmsState message type
     auto message = go1_ros2_cpp::msg::BmsState();
 
+    // Convert UDP_Raw to BmsState
     message.soc = udpLegged.state.bms.SOC; // Battery %
     message.current = udpLegged.state.bms.current; // current in milliamp
     message.cell_vol = udpLegged.state.bms.cell_vol; // cell voltage in array[10]
@@ -152,6 +154,15 @@ private:
     message.cycle = udpLegged.state.bms.cycle; // The current number of cycles of the battery
     message.bq_ntc = udpLegged.state.bms.BQ_NTC; // Temp output in degrees C
     message.mcu_ntc = udpLegged.state.bms.MCU_NTC; // Temp output in degrees C
+
+    // Check if the battery is reporting data
+    if (message.soc == 0)
+    {
+      // If no battery data is detected, display error warning
+      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR a battery of a compatable firmware is inserted \n Low battery safety's offline")
+    }
+    
+
 
     RCLCPP_INFO(this->get_logger(), "Battery at: %i%%", message.soc);
 
