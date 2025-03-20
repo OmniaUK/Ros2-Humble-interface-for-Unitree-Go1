@@ -8,7 +8,7 @@ uint32[2] version
 uint16 bandwidth #bandWidth
 IMU imu
 MotorState[20] motor_state #motorState
-BmsState bms
+#BmsState bms # Excluded due to dedicated BMS topic
 int16[4] foot_force #footForce
 int16[4] foot_force_est #footForceEst
 uint8 mode
