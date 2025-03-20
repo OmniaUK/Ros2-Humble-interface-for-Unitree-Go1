@@ -50,10 +50,12 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 // Edited to comply with syntax constraints.
 #include "go1_ros2_cpp/msg/bms_state.hpp"
 #include "go1_ros2_cpp/msg/high_state.hpp"
+#include "go1_ros2_cpp/msg/imu.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
 // UnitreeSDK includes
+/*IMPORTANT SOURCE: https://unitree-docs.readthedocs.io/en/latest/get_started/Go1_Edu.html*/
 #include "unitree_legged_sdk/unitree_legged_sdk.h"
 
 // IP Address to Pi   (Default: WiFi - 192.168.12.1,   Ethernet - 192.168.123.161)
@@ -116,7 +118,7 @@ public:
     // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
     bms_publisher = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
-        // Create a timer that will trigger calls to the method timer_callback
+        // Create a timer that will trigger calls to the method bms_callback
     // every 0.65s
     timer_bms = this->create_wall_timer(
       650ms, std::bind(&LeggedDataRX::bms_callback, this));
@@ -126,10 +128,20 @@ public:
     // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
     foot_force_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
-    // Create a timer that will trigger calls to the method timer_callback
+    // Create a timer that will trigger calls to the method footForce_callback
     // every 0.15s
     timer_foot_force = this->create_wall_timer(
       150ms, std::bind(&LeggedDataRX::footForce_callback, this));
+
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/imu to the topic "/legged_data/sensors/imu"
+    // a queue length of 10 is specified here for the topic
+    imu_publisher = this->create_publisher<go1_ros2_cpp::msg::IMU>("/legged_data/sensors/imu", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 0.05s
+    timer_imu = this->create_wall_timer(
+      50ms, std::bind(&LeggedDataRX::imu_callback, this));
   }
 
 private:
@@ -140,9 +152,10 @@ private:
   */
   void bms_callback()
   {
-    udpLegged.UDPRecv();  // Fetch the latest state
     // Create an instance of the BmsState message type
     auto message = go1_ros2_cpp::msg::BmsState();
+
+    udpLegged.UDPRecv();  // Fetch the latest state
 
     // Convert UDP_Raw to BmsState
     message.soc = udpLegged.state.bms.SOC; // Battery %
@@ -183,8 +196,15 @@ private:
    // Create an instance of the HighState message type
    auto message = go1_ros2_cpp::msg::HighState();
 
+   udpLegged.UDPRecv();  // Fetch the latest state
+
    message.foot_force = udpLegged.state.footForce;
    message.foot_force_est = udpLegged.state.footForceEst;
+   
+
+   // Remove on release
+   RCLCPP_INFO(this->get_logger(), "foot pressure: %d, %d, %d, %d", message.foot_force[0], 
+                message.foot_force[1], message.foot_force[2], message.foot_force[3]);
 
    // publish the message created above to the topic /legged_data/sensors/foot_force
    foot_force_publisher->publish(message);
@@ -193,6 +213,40 @@ private:
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_foot_force;
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr foot_force_publisher;
+
+
+
+  /*
+  * IMU Data publisher
+  * Takes HighState data and updates the msg with latest foot force sensor data
+  */
+ void imu_callback()
+ {
+   // Create an instance of the IMU message type
+   auto message = go1_ros2_cpp::msg::IMU();
+
+   udpLegged.UDPRecv();  // Fetch the latest state
+
+   message.quaternion = udpLegged.state.imu.quaternion;
+   message.gyroscope = udpLegged.state.imu.gyroscope;
+   message.accelerometer = udpLegged.state.imu.accelerometer;
+   message.rpy = udpLegged.state.imu.rpy;
+   message.temperature = udpLegged.state.imu.temperature;
+
+   // Remove on release
+   RCLCPP_INFO(this->get_logger(), "System Temp(C): %i", message.temperature);
+
+   // publish the message created above to the topic /legged_data/sensors/imu
+   imu_publisher->publish(message);
+ }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_imu;
+  rclcpp::Publisher<go1_ros2_cpp::msg::IMU>::SharedPtr imu_publisher;
+
+
+
+
   size_t count_;
 };
 
