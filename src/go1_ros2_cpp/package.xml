@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>udp_bridge_ros2_cpp</name>
+  <name>go1_ros2_cpp</name>
   <version>0.1.0</version>
   <description>UDP bridge connection to Unitree Go1 and its SDK's</description>
   <maintainer email="hab75@aber.ac.uk">hab75</maintainer>

@@ -15,8 +15,14 @@
 #   set(ARCH arm64)
 # endif()
 
+
 cmake_minimum_required(VERSION 3.8)
-project(udp_bridge_ros2_cpp)
+project(go1_ros2_cpp)
+add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS) # Stops the newer versions of boost throwing warnings
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -39,7 +45,6 @@ find_package(tf2_ros REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-
 
 # .msg Includes Source: https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html
 find_package(rosidl_default_generators REQUIRED)
@@ -68,7 +73,6 @@ link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
-
 
 add_executable(udp_bridge src/udp_bridge.cpp)
 add_executable(examplePublisher src/examplePublisher.cpp)
