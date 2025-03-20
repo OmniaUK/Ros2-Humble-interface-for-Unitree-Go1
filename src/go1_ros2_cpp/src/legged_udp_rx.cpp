@@ -46,7 +46,7 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 // https://index.ros.org/p/std_msgs/
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
 #include "std_msgs/msg/u_int8.hpp" // provides basic Unsigned Int32 message type for publishing data
-#include "udp_bridge_ros2_cpp/msg/BmsState.hpp"
+#include "go1_ros2_cpp/msg/bms_state.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
@@ -95,6 +95,11 @@ void UDPLegged::UDPSend()
 
 UDPLegged udpLegged(HIGHLEVEL); // object creation for callback
 
+
+
+
+
+
 // Declaring a new class as a subclass of the ROS 2 Node class
 class BMSPublisher : public rclcpp::Node
 {
@@ -107,7 +112,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type std_msgs/mgs/UInt32 to the topic "/hello/world"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<udp_bridge_ros2_cpp::msg::BmsState()>("/legged_data/bms", 10);
+    publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/bms", 10);
 
     // Create a timer that will trigger calls to the method timer_callback
     // every 0.5s
@@ -121,14 +126,14 @@ private:
   void bms_callback()
   {
     // Create an instance of the UInt8 message type
-    auto message = udp_bridge_ros2_cpp::msg::BmsState();
+    auto message = go1_ros2_cpp::msg::BmsState();
 
     // Set the pre-defined field "data" in the message to a positive integer value,
     //message.data = udpLegged.state.bms.SOC;
     message.soc = udpLegged.state.bms.SOC;
 
     // custom.UDPRecv(); // Update state from legged SDK
-    RCLCPP_INFO(this->get_logger(), "Battery at %i", message.data);
+    RCLCPP_INFO(this->get_logger(), "Battery at %i", message.soc);
 
     // publish the message created above to the topic /legged_data/rx/bms
     publisher_->publish(message);
@@ -136,7 +141,7 @@ private:
 
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<std_msgs::msg::UInt8>::SharedPtr publisher_;
+  rclcpp::Publisher<go1_ros2_cpp::msg::BmsState>::SharedPtr publisher_;
   size_t count_;
 };
 
@@ -156,20 +161,13 @@ int main(int argc, char *argv[])
   // Initialise ROS 2 for this node
   rclcpp::init(argc, argv);
 
-  // High speed looping updates for tx & rx
-  LoopFunc loop_udpSend("udp_send", udpLegged.dt, 3, boost::bind(&UDPLegged::UDPSend, &udpLegged));
-  LoopFunc loop_udpRecv("udp_recv", udpLegged.dt, 3, boost::bind(&UDPLegged::UDPRecv, &udpLegged));
-
-  loop_udpSend.start();
-  loop_udpRecv.start();
-
   // Create the instance of the Node subclass and
   //  start the spinner with a pointer to the instance
   //  This will keep the node running until interupted by ROS or node returns
   // rclcpp::executors::SingleThreadedExecutor executor;
   // executor.add_node(std::make_shared<BMSPublisher>());
   // executor.spin();
-  rclcpp.spin(std::make_shared<BMSPublisher>());
+  rclcpp::spin(std::make_shared<BMSPublisher>());
   
 
   // When the node is terminated, shut down ROS 2 for this node
