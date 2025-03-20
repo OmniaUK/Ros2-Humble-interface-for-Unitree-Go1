@@ -115,21 +115,20 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
+    bms_publisher = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
+        // Create a timer that will trigger calls to the method timer_callback
+    // every 0.65s
+    timer_bms = this->create_wall_timer(
+      650ms, std::bind(&LeggedDataRX::bms_callback, this));
+
 
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
-
-    // Create a timer that will trigger calls to the method timer_callback
-    // every 0.65s
-    timer_ = this->create_wall_timer(
-        650ms, std::bind(&LeggedDataRX::bms_callback, this));
-
+    foot_force_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
     // Create a timer that will trigger calls to the method timer_callback
     // every 0.15s
-    timer_ = this->create_wall_timer(
+    timer_foot_force = this->create_wall_timer(
       150ms, std::bind(&LeggedDataRX::footForce_callback, this));
   }
 
@@ -159,16 +158,19 @@ private:
     if (message.soc == 0)
     {
       // If no battery data is detected, display error warning
-      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR a battery of a compatable firmware is inserted \n Low battery safety's offline")
+      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR a battery of a compatable firmware is inserted \n Low battery safe shutdown: Offline");
     }
     
 
-
+    // Remove on release
     RCLCPP_INFO(this->get_logger(), "Battery at: %i%%", message.soc);
 
     // publish the message created above to the topic /legged_data/sensors/bms
-    publisher_->publish(message);
+    bms_publisher->publish(message);
   }
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_bms;
+  rclcpp::Publisher<go1_ros2_cpp::msg::BmsState>::SharedPtr bms_publisher;
 
 
   /*
@@ -178,19 +180,19 @@ private:
  void footForce_callback()
  {
    udpLegged.UDPRecv();  // Fetch the latest state
-   // Create an instance of the BmsState message type
-   auto message = go1_ros2_cpp::msg::HighState;
+   // Create an instance of the HighState message type
+   auto message = go1_ros2_cpp::msg::HighState();
 
    message.foot_force = udpLegged.state.footForce;
    message.foot_force_est = udpLegged.state.footForceEst;
 
    // publish the message created above to the topic /legged_data/sensors/foot_force
-   publisher_->publish(message);
+   foot_force_publisher->publish(message);
  }
 
   // Declaration of private fields used for timer, publisher and counter
-  rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr publisher_;
+  rclcpp::TimerBase::SharedPtr timer_foot_force;
+  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr foot_force_publisher;
   size_t count_;
 };
 
@@ -206,11 +208,6 @@ int main(int argc, char *argv[])
 {
   // Initialise ROS 2 for this node
   rclcpp::init(argc, argv);
-
-  // Create the instance of the Node subclass and
-  //  start the spinner with a pointer to the instance
-  //  This will keep the node running until interupted by ROS or node returns
-  rclcpp::spin(std::make_shared<LeggedDataRX>());
   
   /*
   * Start node as multithread process
