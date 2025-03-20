@@ -24,4 +24,5 @@ sudo ./b2
 Step 6:
 sudo ./b2 install
 
-
+# Just to be safe:
+sudo ldconfig
