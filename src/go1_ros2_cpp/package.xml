@@ -5,6 +5,7 @@
   <version>0.1.0</version>
   <description>UDP bridge connection to Unitree Go1 and its SDK's</description>
   <maintainer email="hab75@aber.ac.uk">hab75</maintainer>
+  <maintainer email="harry@bowker.biz">OmniaUK</maintainer>
   <license>AGPL-3.0 license</license>
   
 
