@@ -1,4 +1,13 @@
---  Boost version needed 1.65
+--  Boost version needed 1.65 or newer
+
+Auto install:
+
+In a terminal:
+sudo apt-get install libboost-all-dev
+
+
+
+Manual Install:
 
 Step 1:
 https://www.boost.org/users/history/version_1_65_0.html
