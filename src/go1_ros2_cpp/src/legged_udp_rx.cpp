@@ -45,8 +45,11 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 #include "rclcpp/rclcpp.hpp" // includes most common libraries for ROS 2
 // https://index.ros.org/p/std_msgs/
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
-#include "std_msgs/msg/u_int8.hpp" // provides basic Unsigned Int32 message type for publishing data
+
+// Unitree ros to real msg's
+// Edited to comply with syntax constraints.
 #include "go1_ros2_cpp/msg/bms_state.hpp"
+//#include "go1_ros2_cpp/msg/high_state.hpp" Next up
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
@@ -101,23 +104,28 @@ UDPLegged udpLegged(HIGHLEVEL); // object creation for callback
 
 
 // Declaring a new class as a subclass of the ROS 2 Node class
-class BMSPublisher : public rclcpp::Node
+class LeggedDataRX : public rclcpp::Node
 {
 
 public:
   // Constructor, specifying node name and initialising a counter
-  BMSPublisher()
-      : Node("bms_publisher"), count_(0)
+  LeggedDataRX()
+      : Node("LeggedDataRX"), count_(0)
   {
     // Create the instance of the publisher that will publish messages
-    // of type std_msgs/mgs/UInt32 to the topic "/hello/world"
+    // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/bms", 10);
+    publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
+    // a queue length of 10 is specified here for the topic
+    publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
 
     // Create a timer that will trigger calls to the method timer_callback
     // every 0.5s
     timer_ = this->create_wall_timer(
-        500ms, std::bind(&BMSPublisher::bms_callback, this));
+        650ms, std::bind(&LeggedDataRX::bms_callback, this));
   }
 
 private:
@@ -125,15 +133,23 @@ private:
   // at the specified intervals
   void bms_callback()
   {
-    // Create an instance of the UInt8 message type
+    udpLegged.UDPRecv();  // Fetch the latest state
+    // Create an instance of the BmsState message type
     auto message = go1_ros2_cpp::msg::BmsState();
 
     // Set the pre-defined field "data" in the message to a positive integer value,
     //message.data = udpLegged.state.bms.SOC;
-    message.soc = udpLegged.state.bms.SOC;
+    message.soc = udpLegged.state.bms.SOC; // Battery %
+    message.current = udpLegged.state.bms.current; // current in milliamp
+    message.cell_vol = udpLegged.state.bms.cell_vol; // cell voltage in array[10]
+    message.version_h = udpLegged.state.bms.version_h; // Battery firmware version
+    message.bms_status = udpLegged.state.bms.bms_status; // Battery status
+    message.cycle = udpLegged.state.bms.cycle; // The current number of cycles of the battery
+    message.bq_ntc = udpLegged.state.bms.BQ_NTC; // Temp output in degrees C
+    message.mcu_ntc = udpLegged.state.bms.MCU_NTC;
 
     // custom.UDPRecv(); // Update state from legged SDK
-    RCLCPP_INFO(this->get_logger(), "Battery at %i", message.soc);
+    RCLCPP_INFO(this->get_logger(), "Battery at: %i%%", message.soc);
 
     // publish the message created above to the topic /legged_data/rx/bms
     publisher_->publish(message);
@@ -164,11 +180,18 @@ int main(int argc, char *argv[])
   // Create the instance of the Node subclass and
   //  start the spinner with a pointer to the instance
   //  This will keep the node running until interupted by ROS or node returns
-  // rclcpp::executors::SingleThreadedExecutor executor;
-  // executor.add_node(std::make_shared<BMSPublisher>());
-  // executor.spin();
-  rclcpp::spin(std::make_shared<BMSPublisher>());
+  rclcpp::spin(std::make_shared<LeggedDataRX>());
   
+  /*
+  * Start node as multithread process
+  * Prevents any single callback blocking another. (Helps improve performance)
+  */
+
+  // Source: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html
+  rclcpp::executors::MultiThreadedExecutor executor;
+  auto node = std::make_shared<LeggedDataRX>();
+  executor.add_node(node);
+  executor.spin();
 
   // When the node is terminated, shut down ROS 2 for this node
   rclcpp::shutdown();
