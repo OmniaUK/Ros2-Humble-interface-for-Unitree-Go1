@@ -49,7 +49,7 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 // Unitree ros to real msg's
 // Edited to comply with syntax constraints.
 #include "go1_ros2_cpp/msg/bms_state.hpp"
-//#include "go1_ros2_cpp/msg/high_state.hpp" Next up
+#include "go1_ros2_cpp/msg/high_state.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
@@ -118,27 +118,32 @@ public:
     publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
 
     // Create the instance of the publisher that will publish messages
-    // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
+    // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
+    publisher_ = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
 
     // Create a timer that will trigger calls to the method timer_callback
-    // every 0.5s
+    // every 0.65s
     timer_ = this->create_wall_timer(
         650ms, std::bind(&LeggedDataRX::bms_callback, this));
+
+    // Create a timer that will trigger calls to the method timer_callback
+    // every 0.15s
+    timer_ = this->create_wall_timer(
+      150ms, std::bind(&LeggedDataRX::footForce_callback, this));
   }
 
 private:
-  // This method will be called automatically by the timer
-  // at the specified intervals
+  /*
+  * BMS Data publisher
+  * Takes bms data and updates the msg with latest battery sensor data
+  */
   void bms_callback()
   {
     udpLegged.UDPRecv();  // Fetch the latest state
     // Create an instance of the BmsState message type
     auto message = go1_ros2_cpp::msg::BmsState();
 
-    // Set the pre-defined field "data" in the message to a positive integer value,
-    //message.data = udpLegged.state.bms.SOC;
     message.soc = udpLegged.state.bms.SOC; // Battery %
     message.current = udpLegged.state.bms.current; // current in milliamp
     message.cell_vol = udpLegged.state.bms.cell_vol; // cell voltage in array[10]
@@ -146,23 +151,37 @@ private:
     message.bms_status = udpLegged.state.bms.bms_status; // Battery status
     message.cycle = udpLegged.state.bms.cycle; // The current number of cycles of the battery
     message.bq_ntc = udpLegged.state.bms.BQ_NTC; // Temp output in degrees C
-    message.mcu_ntc = udpLegged.state.bms.MCU_NTC;
+    message.mcu_ntc = udpLegged.state.bms.MCU_NTC; // Temp output in degrees C
 
-    // custom.UDPRecv(); // Update state from legged SDK
     RCLCPP_INFO(this->get_logger(), "Battery at: %i%%", message.soc);
 
-    // publish the message created above to the topic /legged_data/rx/bms
+    // publish the message created above to the topic /legged_data/sensors/bms
     publisher_->publish(message);
   }
 
+
+  /*
+  * FootForce Data publisher
+  * Takes HighState data and updates the msg with latest foot force sensor data
+  */
+ void footForce_callback()
+ {
+   udpLegged.UDPRecv();  // Fetch the latest state
+   // Create an instance of the BmsState message type
+   auto message = go1_ros2_cpp::msg::HighState;
+
+   message.foot_force = udpLegged.state.footForce;
+   message.foot_force_est = udpLegged.state.footForceEst;
+
+   // publish the message created above to the topic /legged_data/sensors/foot_force
+   publisher_->publish(message);
+ }
+
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<go1_ros2_cpp::msg::BmsState>::SharedPtr publisher_;
+  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr publisher_;
   size_t count_;
 };
-
-
-
 
 
 
@@ -185,9 +204,8 @@ int main(int argc, char *argv[])
   /*
   * Start node as multithread process
   * Prevents any single callback blocking another. (Helps improve performance)
+  * Source: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html
   */
-
-  // Source: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html
   rclcpp::executors::MultiThreadedExecutor executor;
   auto node = std::make_shared<LeggedDataRX>();
   executor.add_node(node);
