@@ -45,12 +45,17 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 #include "rclcpp/rclcpp.hpp" // includes most common libraries for ROS 2
 // https://index.ros.org/p/std_msgs/
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
-#include "std_msgs/msg/u_int8.hpp" // provides basic Unsigned Int32 message type for publishing data
-#include "udp_bridge_ros2_cpp/msg/BmsState.hpp"
+
+// Unitree ros to real msg's
+// Edited to comply with syntax constraints.
+#include "go1_ros2_cpp/msg/bms_state.hpp"
+#include "go1_ros2_cpp/msg/high_state.hpp"
+#include "go1_ros2_cpp/msg/imu.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
 // UnitreeSDK includes
+/*IMPORTANT SOURCE: https://unitree-docs.readthedocs.io/en/latest/get_started/Go1_Edu.html*/
 #include "unitree_legged_sdk/unitree_legged_sdk.h"
 
 // IP Address to Pi   (Default: WiFi - 192.168.12.1,   Ethernet - 192.168.123.161)
@@ -95,53 +100,155 @@ void UDPLegged::UDPSend()
 
 UDPLegged udpLegged(HIGHLEVEL); // object creation for callback
 
+
+
+
+
+
 // Declaring a new class as a subclass of the ROS 2 Node class
-class BMSPublisher : public rclcpp::Node
+class LeggedDataRX : public rclcpp::Node
 {
 
 public:
   // Constructor, specifying node name and initialising a counter
-  BMSPublisher()
-      : Node("bms_publisher"), count_(0)
+  LeggedDataRX()
+      : Node("LeggedDataRX"), count_(0)
   {
     // Create the instance of the publisher that will publish messages
-    // of type std_msgs/mgs/UInt32 to the topic "/hello/world"
+    // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<udp_bridge_ros2_cpp::msg::BmsState()>("/legged_data/bms", 10);
+    bms_publisher = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
+        // Create a timer that will trigger calls to the method bms_callback
+    // every 0.65s
+    timer_bms = this->create_wall_timer(
+      650ms, std::bind(&LeggedDataRX::bms_callback, this));
 
-    // Create a timer that will trigger calls to the method timer_callback
-    // every 0.5s
-    timer_ = this->create_wall_timer(
-        500ms, std::bind(&BMSPublisher::bms_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/bms"
+    // a queue length of 10 is specified here for the topic
+    foot_force_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
+    // Create a timer that will trigger calls to the method footForce_callback
+    // every 0.15s
+    timer_foot_force = this->create_wall_timer(
+      150ms, std::bind(&LeggedDataRX::footForce_callback, this));
+
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/imu to the topic "/legged_data/sensors/imu"
+    // a queue length of 10 is specified here for the topic
+    imu_publisher = this->create_publisher<go1_ros2_cpp::msg::IMU>("/legged_data/sensors/imu", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 0.05s
+    timer_imu = this->create_wall_timer(
+      50ms, std::bind(&LeggedDataRX::imu_callback, this));
   }
 
 private:
-  // This method will be called automatically by the timer
-  // at the specified intervals
+  /*
+  * BMS Data publisher
+  * Takes bms data and updates the msg with latest battery sensor data
+  * WARNING: Batterys will require to be on compatable firmware versions to the robot for data. 
+  */
   void bms_callback()
   {
-    // Create an instance of the UInt8 message type
-    auto message = udp_bridge_ros2_cpp::msg::BmsState();
+    // Create an instance of the BmsState message type
+    auto message = go1_ros2_cpp::msg::BmsState();
 
-    // Set the pre-defined field "data" in the message to a positive integer value,
-    //message.data = udpLegged.state.bms.SOC;
-    message.soc = udpLegged.state.bms.SOC;
+    udpLegged.UDPRecv();  // Fetch the latest state
 
-    // custom.UDPRecv(); // Update state from legged SDK
-    RCLCPP_INFO(this->get_logger(), "Battery at %i", message.data);
+    // Convert UDP_Raw to BmsState
+    message.soc = udpLegged.state.bms.SOC; // Battery %
+    message.current = udpLegged.state.bms.current; // current in milliamp
+    message.cell_vol = udpLegged.state.bms.cell_vol; // cell voltage in array[10]
+    message.version_h = udpLegged.state.bms.version_h; // Battery firmware version
+    message.bms_status = udpLegged.state.bms.bms_status; // Battery status
+    message.cycle = udpLegged.state.bms.cycle; // The current number of cycles of the battery
+    message.bq_ntc = udpLegged.state.bms.BQ_NTC; // Temp output in degrees C
+    message.mcu_ntc = udpLegged.state.bms.MCU_NTC; // Temp output in degrees C
 
-    // publish the message created above to the topic /legged_data/rx/bms
-    publisher_->publish(message);
+    // Check if the battery is reporting data
+    if (message.soc == 0)
+    {
+      // If no battery data is detected, display error warning
+      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR of a compatable firmware \n Low battery safe shutdown: Offline");
+    }
+    
+
+    // Remove on release
+    RCLCPP_INFO(this->get_logger(), "Battery at: %i%%", message.soc);
+
+    // publish the message created above to the topic /legged_data/sensors/bms
+    bms_publisher->publish(message);
   }
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_bms;
+  rclcpp::Publisher<go1_ros2_cpp::msg::BmsState>::SharedPtr bms_publisher;
+
+
+  /*
+  * FootForce Data publisher
+  * Takes HighState data and updates the msg with latest foot force sensor data
+  */
+ void footForce_callback()
+ {
+   udpLegged.UDPRecv();  // Fetch the latest state
+   // Create an instance of the HighState message type
+   auto message = go1_ros2_cpp::msg::HighState();
+
+   udpLegged.UDPRecv();  // Fetch the latest state
+
+   message.foot_force = udpLegged.state.footForce;
+   message.foot_force_est = udpLegged.state.footForceEst;
+   
+
+   // Remove on release
+   RCLCPP_INFO(this->get_logger(), "foot pressure: %d, %d, %d, %d", message.foot_force[0], 
+                message.foot_force[1], message.foot_force[2], message.foot_force[3]);
+
+   // publish the message created above to the topic /legged_data/sensors/foot_force
+   foot_force_publisher->publish(message);
+ }
 
   // Declaration of private fields used for timer, publisher and counter
-  rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<std_msgs::msg::UInt8>::SharedPtr publisher_;
+  rclcpp::TimerBase::SharedPtr timer_foot_force;
+  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr foot_force_publisher;
+
+
+
+  /*
+  * IMU Data publisher
+  * Takes HighState data and updates the msg with latest foot force sensor data
+  */
+ void imu_callback()
+ {
+   // Create an instance of the IMU message type
+   auto message = go1_ros2_cpp::msg::IMU();
+
+   udpLegged.UDPRecv();  // Fetch the latest state
+
+   message.quaternion = udpLegged.state.imu.quaternion;
+   message.gyroscope = udpLegged.state.imu.gyroscope;
+   message.accelerometer = udpLegged.state.imu.accelerometer;
+   message.rpy = udpLegged.state.imu.rpy;
+   message.temperature = udpLegged.state.imu.temperature;
+
+   // Remove on release
+   RCLCPP_INFO(this->get_logger(), "System Temp(C): %i", message.temperature);
+
+   // publish the message created above to the topic /legged_data/sensors/imu
+   imu_publisher->publish(message);
+ }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_imu;
+  rclcpp::Publisher<go1_ros2_cpp::msg::IMU>::SharedPtr imu_publisher;
+
+
+
+
   size_t count_;
 };
-
-
-
 
 
 
@@ -155,22 +262,16 @@ int main(int argc, char *argv[])
 {
   // Initialise ROS 2 for this node
   rclcpp::init(argc, argv);
-
-  // High speed looping updates for tx & rx
-  LoopFunc loop_udpSend("udp_send", udpLegged.dt, 3, boost::bind(&UDPLegged::UDPSend, &udpLegged));
-  LoopFunc loop_udpRecv("udp_recv", udpLegged.dt, 3, boost::bind(&UDPLegged::UDPRecv, &udpLegged));
-
-  loop_udpSend.start();
-  loop_udpRecv.start();
-
-  // Create the instance of the Node subclass and
-  //  start the spinner with a pointer to the instance
-  //  This will keep the node running until interupted by ROS or node returns
-  // rclcpp::executors::SingleThreadedExecutor executor;
-  // executor.add_node(std::make_shared<BMSPublisher>());
-  // executor.spin();
-  rclcpp.spin(std::make_shared<BMSPublisher>());
   
+  /*
+  * Start node as multithread process
+  * Prevents any single callback blocking another. (Helps improve performance)
+  * Source: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html
+  */
+  rclcpp::executors::MultiThreadedExecutor executor;
+  auto node = std::make_shared<LeggedDataRX>();
+  executor.add_node(node);
+  executor.spin();
 
   // When the node is terminated, shut down ROS 2 for this node
   rclcpp::shutdown();
