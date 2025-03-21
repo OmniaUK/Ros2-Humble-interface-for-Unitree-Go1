@@ -18,8 +18,6 @@
 
 cmake_minimum_required(VERSION 3.8)
 project(go1_ros2_cpp)
-# add_definitions(-DBOOST_BIND_GLOBAL_PLACEHOLDERS) # Stops the newer versions of boost throwing warnings
-# set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -89,6 +87,7 @@ SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_cam
 #
 add_executable(udp_bridge src/udp_bridge.cpp)
 add_executable(legged_udp_rx src/legged_udp_rx.cpp)
+add_executable(face_light_controller src/face_light_controller.cpp)
 add_executable(twist_subscriber src/twist_subscriber.cpp)
 
 #
@@ -96,7 +95,10 @@ add_executable(twist_subscriber src/twist_subscriber.cpp)
 #
 ament_export_dependencies(rosidl_default_runtime) # msg export
 ament_target_dependencies(udp_bridge rclcpp std_msgs)
+
 ament_target_dependencies(legged_udp_rx rclcpp std_msgs)
+ament_target_dependencies(face_light_controller rclcpp std_msgs)
+
 ament_target_dependencies(twist_subscriber rclcpp std_msgs geometry_msgs)
 
 # Install includes before packages
@@ -115,6 +117,7 @@ install(TARGETS
   udp_bridge
   legged_udp_rx
   twist_subscriber
+  face_light_controller
   DESTINATION lib/${PROJECT_NAME})
 
 
@@ -138,6 +141,12 @@ target_link_libraries(legged_udp_rx
 
 target_link_libraries(twist_subscriber
   ${LEGGED_LIB} #Legged include only
+  pthread
+  rt
+)
+
+target_link_libraries(face_light_controller
+  ${FACELED_LIB}
   pthread
   rt
 )
