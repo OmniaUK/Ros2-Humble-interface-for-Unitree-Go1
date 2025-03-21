@@ -171,7 +171,7 @@ private:
     if (message.soc == 0)
     {
       // If no battery data is detected, display error warning
-      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR a battery of a compatable firmware is inserted \n Low battery safe shutdown: Offline");
+      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR of a compatable firmware \n Low battery safe shutdown: Offline");
     }
     
 
