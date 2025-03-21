@@ -146,7 +146,8 @@ target_link_libraries(twist_subscriber
 )
 
 target_link_libraries(face_light_controller
-  ${FACELED_LIB}
+  ${FACELED_LIB} # Face LED SDK
+  "${cpp_typesupport_target}" # msg include
   pthread
   rt
 )
