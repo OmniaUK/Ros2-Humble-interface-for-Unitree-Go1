@@ -10,7 +10,7 @@ This is a ROS2 Wraper package designed to replace the developer api from the (no
 With some additional features added to allow for better software control over the robot.
 
 The goal of this software, as part of my University Major-Project, was to create a more standardized development API for use of the Unitree Go1 hardware.
-My hopes were to aid my University to use the robot for research use, but also allow those with the same hardware to have open-source access to a better option (with comprehensive documentation) that would allow for faster development using a familiar ROS2 Humble framework.
+My hopes were to aid my University to use the robot for research, but also allow those with the same hardware in industry/ at home, to have open-source access to a better option (with comprehensive documentation) that would allow for faster development using a familiar ROS2 Humble framework.
 
 With special thanks to:
 - Patricia Shaw
