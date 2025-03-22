@@ -57,7 +57,7 @@ public:
     // a queue length of 10 is specified here and a reference is given
     // to the topic_callback method that will process messages that are received.
     faceLight_subscription = this->create_subscription<go1_ros2_cpp::msg::LED>(
-      "/hello/world", 10, std::bind(&FaceLightController::topic_callback, this, _1));
+      "/face/led", 10, std::bind(&FaceLightController::topic_callback, this, _1));
   }
 
 private:
