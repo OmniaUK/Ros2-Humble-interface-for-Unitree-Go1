@@ -2,8 +2,8 @@ uint8[2] head
 uint8 level_flag #levelFlag
 uint8 frame_reserve #frameReserve
 
-uint32[2] sn #SN
-uint32[2] version
+#uint32[2] sn #SN  -- Dont want to change the SN
+#uint32[2] version -- Dont want to change the version
 uint16 bandwidth #bandWidth
 uint8 mode 
 
