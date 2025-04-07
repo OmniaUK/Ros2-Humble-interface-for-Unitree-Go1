@@ -96,7 +96,7 @@ add_executable(twist_subscriber src/twist_subscriber.cpp)
 ament_export_dependencies(rosidl_default_runtime) # msg export
 ament_target_dependencies(udp_bridge rclcpp std_msgs)
 
-ament_target_dependencies(legged_udp_rx rclcpp std_msgs)
+ament_target_dependencies(legged_udp_rx rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(face_light_controller rclcpp std_msgs)
 
 ament_target_dependencies(twist_subscriber rclcpp std_msgs geometry_msgs)

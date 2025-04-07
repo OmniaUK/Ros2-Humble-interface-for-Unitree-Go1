@@ -45,6 +45,9 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 #include "rclcpp/rclcpp.hpp" // includes most common libraries for ROS 2
 // https://index.ros.org/p/std_msgs/
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
+#include "geometry_msgs/msg/twist.hpp"  // twist msg
+
+
 
 // Unitree ros to real msg's
 // Edited to comply with syntax constraints.
@@ -192,7 +195,6 @@ private:
   */
  void footForce_callback()
  {
-   udpLegged.UDPRecv();  // Fetch the latest state
    // Create an instance of the HighState message type
    auto message = go1_ros2_cpp::msg::HighState();
 
@@ -250,6 +252,61 @@ private:
   size_t count_;
 };
 
+//Declaring a new class as a subclass of the ROS 2 Node class
+class LeggedControl : public rclcpp::Node
+{
+public:
+  //Constructor specifying node name for superclass
+  LeggedControl()
+  : Node("legged_control")
+  {
+    udpLegged.cmd.mode = 0; // 0:idle, default stand      1:forced stand     2:walk continuously
+    udpLegged.cmd.gaitType = 0;
+    udpLegged.cmd.speedLevel = 0;
+    udpLegged.cmd.footRaiseHeight = 0;
+    udpLegged.cmd.bodyHeight = 0;
+    udpLegged.cmd.euler[0] = 0;
+    udpLegged.cmd.euler[1] = 0;
+    udpLegged.cmd.euler[2] = 0;
+    udpLegged.cmd.velocity[0] = 0.0f;
+    udpLegged.cmd.velocity[1] = 0.0f;
+    udpLegged.cmd.yawSpeed = 0.0f;
+    udpLegged.cmd.reserve = 0;
+    // Create the instance of the subscriber that will receive messages
+    // of type std_msgs/mgs/UInt32 published to the topic "/hello/world"
+    // a queue length of 10 is specified here and a reference is given
+    // to the topic_callback method that will process messages that are received.
+    subscription_twist = this->create_subscription<geometry_msgs::msg::Twist>(
+      "/cmd_vel", 10, std::bind(&LeggedControl::twist_callback, this, std::placeholders::_1));
+  }
+
+private:
+  // Private function that will be triggered automatically when messages are received
+  // from the topic /cmd_vel
+  // The parameter specifies the expected message type, which must match
+  // the type published to the topic
+  void twist_callback(const geometry_msgs::msg::Twist & msg)
+  {
+    udpLegged.UDPRecv();  // Fetch the latest state
+    //Logger used to print details of the message received (printed to console).
+    RCLCPP_INFO(this->get_logger(), "I heard: msg.data=%f  and  %f", msg.linear.x, msg.angular.z);
+    udpLegged.cmd.velocity[0] = msg.linear.x;  // Forward / backward motion
+    udpLegged.cmd.velocity[1] = msg.linear.y; // Left / right motion
+
+    udpLegged.cmd.bodyHeight = msg.linear.z; // Vertical height
+
+    udpLegged.cmd.yawSpeed = msg.angular.z; // Rotation in rad/s
+
+    udpLegged.cmd.mode = 2;
+
+    udpLegged.udp.SetSend(udpLegged.cmd);
+    udpLegged.UDPSend();
+  }
+
+  //Declaration of private fields used for subscriber
+  rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_twist;
+};
+
 
 
 // Main method defining entry point for program
@@ -264,8 +321,10 @@ int main(int argc, char *argv[])
   * Source: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Executors.html
   */
   rclcpp::executors::MultiThreadedExecutor executor;
-  auto node = std::make_shared<LeggedDataRX>();
-  executor.add_node(node);
+  auto leggedDataNode = std::make_shared<LeggedDataRX>();
+  auto LeggedControlNode = std::make_shared<LeggedControl>(); 
+  executor.add_node(leggedDataNode);
+  executor.add_node(LeggedControlNode);
   executor.spin();
 
   // When the node is terminated, shut down ROS 2 for this node
