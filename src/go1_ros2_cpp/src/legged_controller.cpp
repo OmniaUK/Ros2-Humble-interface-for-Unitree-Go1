@@ -17,7 +17,7 @@
 // PHS: Renamed class from MinimalPublisher
 // PHS: Additional comments added to document the code
 // PHS: Modified topic name used
-// Hab75: Modified topic name and use.
+// Hab75: Modified topic name and use to legged_controller for Unitree Go1.
 
 /*
 About: A Ros publisher file that takes recived UDP data from a unitree Go1 to publush
