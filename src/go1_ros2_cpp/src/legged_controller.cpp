@@ -53,6 +53,7 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 // Edited to comply with syntax constraints.
 #include "go1_ros2_cpp/msg/bms_state.hpp"
 #include "go1_ros2_cpp/msg/high_state.hpp"
+#include "go1_ros2_cpp/msg/high_cmd.hpp"
 #include "go1_ros2_cpp/msg/imu.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
@@ -80,6 +81,7 @@ public: // <- Change to your robot model- Aliengo, A1, Go1 (Tested), B1
   {
     udp.InitCmdData(cmd);
   }
+
   void UDPRecv();
   void UDPSend();
 
@@ -145,6 +147,16 @@ public:
     // every 0.05s
     timer_imu = this->create_wall_timer(
       50ms, std::bind(&LeggedDataRX::imu_callback, this));
+
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/imu to the topic "/legged_data/status/mode"
+    // a queue length of 10 is specified here for the topic
+    mode_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/mode", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 0.65s
+    timer_mode = this->create_wall_timer(
+      650ms, std::bind(&LeggedDataRX::mode_callback, this));
   }
 
 private:
@@ -220,7 +232,7 @@ private:
 
   /*
   * IMU Data publisher
-  * Takes HighState data and updates the msg with latest foot force sensor data
+  * Takes IMU data and updates the msg with latest imu data
   */
  void imu_callback()
  {
@@ -246,11 +258,43 @@ private:
   rclcpp::TimerBase::SharedPtr timer_imu;
   rclcpp::Publisher<go1_ros2_cpp::msg::IMU>::SharedPtr imu_publisher;
 
+  /*
+  * Mode Data publisher
+  * Takes HighState data and updates the msg with latest mode data
+  */
+ void mode_callback()
+ {
+   // Create an instance of the HighState message type
+   auto message = go1_ros2_cpp::msg::HighState();
+
+   udpLegged.UDPRecv();  // Fetch the latest state
+
+   // Set latest known mode to msg
+   message.mode = udpLegged.state.mode;
+
+   // Remove on release
+   RCLCPP_INFO(this->get_logger(), "System mode: %i", message.mode);
+
+   // publish the message created above to the topic /legged_data/status/mode
+   mode_publisher->publish(message);
+ }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_mode;
+  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr mode_publisher;
 
 
 
   size_t count_;
 };
+
+
+
+
+
+
+
+
 
 //Declaring a new class as a subclass of the ROS 2 Node class
 class LeggedControl : public rclcpp::Node
@@ -260,34 +304,28 @@ public:
   LeggedControl()
   : Node("legged_control")
   {
-    udpLegged.cmd.mode = 0; // 0:idle, default stand      1:forced stand     2:walk continuously
-    udpLegged.cmd.gaitType = 0;
-    udpLegged.cmd.speedLevel = 0;
-    udpLegged.cmd.footRaiseHeight = 0;
-    udpLegged.cmd.bodyHeight = 0;
-    udpLegged.cmd.euler[0] = 0;
-    udpLegged.cmd.euler[1] = 0;
-    udpLegged.cmd.euler[2] = 0;
-    udpLegged.cmd.velocity[0] = 0.0f;
-    udpLegged.cmd.velocity[1] = 0.0f;
-    udpLegged.cmd.yawSpeed = 0.0f;
-    udpLegged.cmd.reserve = 0;
-    // Create the instance of the subscriber that will receive messages
-    // of type std_msgs/mgs/UInt32 published to the topic "/hello/world"
+
+    // Create the instance of the twist subscriber that will receive messages
+    // of type geometry_msgs::msg::Twist published to the topic "/cmd_vel"
     // a queue length of 10 is specified here and a reference is given
-    // to the topic_callback method that will process messages that are received.
     subscription_twist = this->create_subscription<geometry_msgs::msg::Twist>(
       "/cmd_vel", 10, std::bind(&LeggedControl::twist_callback, this, std::placeholders::_1));
+
+
+    // Create the instance of the mode subscriber that will receive messages
+    // of type  published to the topic "/cmd_mode"
+    // a queue length of 10 is specified here and a reference is given
+    subscription_mode = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
+      "/cmd_mode", 10, std::bind(&LeggedControl::cmdMode_callback, this, std::placeholders::_1));
   }
 
 private:
-  // Private function that will be triggered automatically when messages are received
-  // from the topic /cmd_vel
-  // The parameter specifies the expected message type, which must match
-  // the type published to the topic
+  /*
+  * twist Data subscriber
+  * Takes twist msg data and sends it via UDP to the robot
+  */
   void twist_callback(const geometry_msgs::msg::Twist & msg)
   {
-    udpLegged.UDPRecv();  // Fetch the latest state
     //Logger used to print details of the message received (printed to console).
     RCLCPP_INFO(this->get_logger(), "I heard: msg.data=%f  and  %f", msg.linear.x, msg.angular.z);
     udpLegged.cmd.velocity[0] = msg.linear.x;  // Forward / backward motion
@@ -297,14 +335,31 @@ private:
 
     udpLegged.cmd.yawSpeed = msg.angular.z; // Rotation in rad/s
 
-    udpLegged.cmd.mode = 2;
-
     udpLegged.udp.SetSend(udpLegged.cmd);
     udpLegged.UDPSend();
   }
-
   //Declaration of private fields used for subscriber
   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_twist;
+
+
+    /*
+  * mode Data subscriber
+  * Takes HighCmd msg data and sends it via UDP to the robot
+  */
+ void cmdMode_callback(const go1_ros2_cpp::msg::HighCmd & msg)
+ {
+
+   // Remove on release
+   RCLCPP_INFO(this->get_logger(), "I heard: msg.data=%i", msg.mode);
+
+   udpLegged.cmd.mode = msg.mode;
+
+   udpLegged.udp.SetSend(udpLegged.cmd);
+   udpLegged.UDPSend();
+ }
+ //Declaration of private fields used for subscriber
+ rclcpp::Subscription<go1_ros2_cpp::msg::HighCmd>::SharedPtr subscription_mode;
+
 };
 
 
