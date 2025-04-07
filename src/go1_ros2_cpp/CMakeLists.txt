@@ -85,7 +85,6 @@ SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_cam
 #
 # Create executables
 #
-add_executable(udp_bridge src/udp_bridge.cpp)
 add_executable(legged_controller src/legged_controller.cpp)
 add_executable(face_light_controller src/face_light_controller.cpp)
 
@@ -93,7 +92,6 @@ add_executable(face_light_controller src/face_light_controller.cpp)
 # Set dependacies
 #
 ament_export_dependencies(rosidl_default_runtime) # msg export
-ament_target_dependencies(udp_bridge rclcpp std_msgs)
 
 ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(face_light_controller rclcpp std_msgs)
@@ -111,7 +109,6 @@ install(
 # Install executables to package
 #
 install(TARGETS 
-  udp_bridge
   legged_controller
   face_light_controller
   DESTINATION lib/${PROJECT_NAME})
@@ -120,13 +117,6 @@ install(TARGETS
 #
 # Install SDK's
 #
-target_link_libraries(udp_bridge
-  ${LEGGED_LIB}
-  ${FACELED_LIB}
-  pthread
-  rt
-)
-
 target_link_libraries(legged_controller
   ${LEGGED_LIB} #legged SDK
   ${FACELED_LIB} # Facelight SDK
