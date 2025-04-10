@@ -37,11 +37,12 @@ find_package(nav_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(OpenCV REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-#
+
 # Install .msg
 #
 # .msg Includes Source: https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html
@@ -80,6 +81,7 @@ include_directories(include ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 SET(LEGGED_LIB ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
 SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
@@ -102,7 +104,7 @@ ament_export_dependencies(rosidl_default_runtime) # msg export
 
 ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(face_light_controller rclcpp std_msgs)
-ament_target_dependencies(stereo_camera rclcpp std_msgs)
+ament_target_dependencies(stereo_camera rclcpp sensor_msgs)
 ament_target_dependencies(chase rclcpp std_msgs)
 
 # Install includes before packages
@@ -147,6 +149,7 @@ target_link_libraries(face_light_controller
 
 target_link_libraries(stereo_camera
   ${CAMERA_LIB} # CameraSDK
+  ${OpenCV_LIBS} # OpenCV include
   "${cpp_typesupport_target}" # msg include
   pthread
   rt
