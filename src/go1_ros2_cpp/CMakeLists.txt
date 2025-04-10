@@ -88,6 +88,8 @@ SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_cam
 add_executable(legged_controller src/legged_controller.cpp)
 add_executable(face_light_controller src/face_light_controller.cpp)
 
+add_executable(chase src/Examples/chase.cpp)
+
 #
 # Set dependacies
 #
@@ -95,6 +97,7 @@ ament_export_dependencies(rosidl_default_runtime) # msg export
 
 ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(face_light_controller rclcpp std_msgs)
+ament_target_dependencies(chase rclcpp std_msgs)
 
 # Install includes before packages
 install(
@@ -111,6 +114,7 @@ install(
 install(TARGETS 
   legged_controller
   face_light_controller
+  chase
   DESTINATION lib/${PROJECT_NAME})
 
 
@@ -127,6 +131,13 @@ target_link_libraries(legged_controller
 
 
 target_link_libraries(face_light_controller
+  ${FACELED_LIB} # Face LED SDK
+  "${cpp_typesupport_target}" # msg include
+  pthread
+  rt
+)
+
+target_link_libraries(chase
   ${FACELED_LIB} # Face LED SDK
   "${cpp_typesupport_target}" # msg include
   pthread
