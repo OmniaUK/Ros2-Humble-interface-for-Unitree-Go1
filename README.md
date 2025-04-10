@@ -54,6 +54,12 @@ sudo ./b2
 Step 6:
 sudo ./b2 install
 ```
+
+- OpenCV2
+```
+To Do
+```
+
 # How to install
 To Do...
 
