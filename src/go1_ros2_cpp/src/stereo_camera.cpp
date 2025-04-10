@@ -36,12 +36,15 @@
 #include "rclcpp/rclcpp.hpp" // includes most common libraries for ROS 2
 //https://index.ros.org/p/std_msgs/
 //https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
-#include "std_msgs/msg/u_int32.hpp" // provides basic Unsigned Int32 message type for publishing data
+#include "sensor_msgs/msg/point_cloud2.hpp" // Point cloud message from cameras
 
 //Important: these includes should be reflected in the package.xml and CMakeLists.txt
+#include "UnitreeCameraSDK.hpp"
 
 //Namespace specified for simplfication when using chrono library
 using namespace std::chrono_literals;
+
+// UnitreeCamera StereoCamera
 
 /* This program creates a node for outputting image data from the Go1 stereo cameras
    That will include point cloud data & raw image data */
@@ -57,7 +60,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type std_msgs/mgs/UInt32 to the topic "/hello/world"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<std_msgs::msg::UInt32>("/hello/world", 10);
+    publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("/sensors/camera/face_camera/image_pointcloud", 10);
 
     // Create a timer that will trigger calls to the method timer_callback
     // every 0.5s
@@ -71,14 +74,14 @@ private:
   void timer_callback()
   {
     //Create an instance of the UInt32 message type
-    auto message = std_msgs::msg::UInt32();
+    auto message = sensor_msgs::msg::PointCloud2();
 
     //Set the pre-defined field "data" in the message to a positive integer value,
     // incrementing the counter each time a message is constructed
-    message.data = count_++;
+    message.;
 
     //Add ROS 2 logger entry with details of the message (print message to console)
-    RCLCPP_INFO(this->get_logger(), "Publishing: msg.data=%i", message.data);
+    //RCLCPP_INFO(this->get_logger(), "Publishing: msg.data=%i", message.data);
 
     //publish the message created above to the topic /hello/world
     publisher_->publish(message);
@@ -86,7 +89,7 @@ private:
 
   //Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_;
-  rclcpp::Publisher<std_msgs::msg::UInt32>::SharedPtr publisher_;
+  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;
   size_t count_;
 };
 
