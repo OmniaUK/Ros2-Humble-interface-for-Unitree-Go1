@@ -153,7 +153,6 @@ target_link_libraries(stereo_camera
 )
 
 target_link_libraries(chase
-  ${FACELED_LIB} # Face LED SDK
   "${cpp_typesupport_target}" # msg include
   pthread
   rt
