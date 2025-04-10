@@ -17,6 +17,7 @@
 // PHS: Renamed class from MinimalPublisher
 // PHS: Additional comments added to document the code
 // PHS: Modified topic name used
+// HAB75: Modified to stereo_camera nodes for Unitree Go1
 
 //https://en.cppreference.com/w/cpp/chrono
 #include <chrono> // provides system_clock, times and durations
@@ -42,8 +43,8 @@
 //Namespace specified for simplfication when using chrono library
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
- * member function as a callback from the timer. */
+/* This program creates a node for outputting image data from the Go1 stereo cameras
+   That will include point cloud data & raw image data */
 
 //Declaring a new class as a subclass of the ROS 2 Node class
 class ExamplePublisher : public rclcpp::Node
