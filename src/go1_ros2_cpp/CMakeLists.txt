@@ -70,6 +70,8 @@ rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_t
 link_directories(${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64)
+link_directories(${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
+
 
 #
 # Include SDK's header files
@@ -77,9 +79,11 @@ link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
+include_directories(include ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
 
 SET(LEGGED_LIB ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
 SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
+SET(ULTRASOUND_LIB ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano/libultraSound_SDK.so)
 SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_camera.a)
 
 #
@@ -105,6 +109,7 @@ install(
   ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include 
   ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include
   ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include
+  ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano
   DESTINATION include
 )
 
