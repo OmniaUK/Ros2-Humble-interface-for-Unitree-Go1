@@ -43,19 +43,25 @@
 
 //Namespace specified for simplfication when using chrono library
 using namespace std::chrono_literals;
+using namespace cv; // Open CV namespace, Added for same reasons above.
 
 // UnitreeCamera StereoCamera
+UnitreeCamera camera("../sdk/UnitreecameraSDK/stereo_camera_config.yaml"); //Unitree Go1 head-front camera
+
+
+
+
 
 /* This program creates a node for outputting image data from the Go1 stereo cameras
    That will include point cloud data & raw image data */
 
 //Declaring a new class as a subclass of the ROS 2 Node class
-class ExamplePublisher : public rclcpp::Node
+class CameraPublisher : public rclcpp::Node
 {
 public:
   //Constructor, specifying node name and initialising a counter
-  ExamplePublisher()
-  : Node("example_publisher"), count_(0)
+  CameraPublisher()
+  : Node("CameraSDK"), count_(0)
   {
     // Create the instance of the publisher that will publish messages
     // of type std_msgs/mgs/UInt32 to the topic "/hello/world"
@@ -65,7 +71,7 @@ public:
     // Create a timer that will trigger calls to the method timer_callback
     // every 0.5s
     timer_ = this->create_wall_timer(
-      500ms, std::bind(&ExamplePublisher::timer_callback, this));
+      500ms, std::bind(&CameraPublisher::timer_callback, this));
   }
 
 private:
@@ -102,7 +108,7 @@ int main(int argc, char * argv[])
   //Create the instance of the Node subclass and 
   // start the spinner with a pointer to the instance
   // This will keep the node running until interupted by ROS or node returns
-  rclcpp::spin(std::make_shared<ExamplePublisher>());
+  rclcpp::spin(std::make_shared<CameraPublisher>());
 
   //When the node is terminated, shut down ROS 2 for this node
   rclcpp::shutdown();
