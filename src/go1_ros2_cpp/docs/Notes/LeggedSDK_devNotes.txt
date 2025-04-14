@@ -23,3 +23,14 @@ My choice was option 2. Just seemed like less of a headache. and would ensure RV
 It would also make it easier for ROS2 developers to just pick up and use. as sensor_msgs is a standard package that is part of ROS2.
 
 Looking back. I wish I had looked more at RVIZ during the design and planning phase.
+
+
+
+UDP Connections:
+I had originally though about using two seperate UDP connections for reciveing and sending data. (thinking about resouce management)
+(In hindsight, this was a little stupid considering each conneciton would be sending and reciving anyway.)
+
+But i had discovered a quirk with the SDK. And UDP protocol.
+In the use of the SDK i found i must send data before reciving data. I couldnt just run send once either. thinking this was just needed to set up the connection. Odd.. but out of scope to investigate and fix.
+Alongside this I couldnt run more than one UDP connection to the pi at once. As the newest connection would highjack the previous connection. though wouldnt crash. I only was able to notice this when i spotted the sensor data was not updating when i pressed on the foot sensors or walked around.
+This would be a problem if the safetys were running on data thinking the battery is at 90% when actually its at 1% while running.
