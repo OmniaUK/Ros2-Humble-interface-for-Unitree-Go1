@@ -1,0 +1,22 @@
+The .so file gives me an architecture error:
+ros2@PC-2:~/Ros2-Humble-interface-for-Unitree-Go1$ colcon build 
+Starting >>> go1_ros2_cpp
+--- stderr: go1_ros2_cpp                             
+/usr/bin/ld: /home/ros2/Ros2-Humble-interface-for-Unitree-Go1/src/go1_ros2_cpp/sdk/ultraSoundSDK_Nano/libultraSound_SDK.so: error adding symbols: file in wrong format
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/ultrasound_controller.dir/build.make:176: ultrasound_controller] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:654: CMakeFiles/ultrasound_controller.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
+---
+Failed   <<< go1_ros2_cpp [2.10s, exited with code 2]
+
+Summary: 0 packages finished [2.43s]
+  1 package failed: go1_ros2_cpp
+  1 package had stderr output: go1_ros2_cpp
+ros2@PC-2:~/Ros2-Humble-interface-for-Unitree-Go1$ 
+
+So unlike the faceLight_SDK there does not exist an amd64 type.
+
+Only way to get the ultrasonic sensors working on this system would be to run the ROS node on the nano directly.
+The data could then be captured and brought up to ROS2 via a ROS Bridge. This process due to time constraints was outside of scope for this project.

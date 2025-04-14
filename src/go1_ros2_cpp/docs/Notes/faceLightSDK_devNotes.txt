@@ -1,0 +1,14 @@
+Found an SDK folder sat on the head jetson_nano (192.168.123.13) within the robot.
+
+Ran SFTP to pull this folder from the nano onto my laptop where i found lib and include files just like the leggedSDK & CameraSDK.
+Based on this I figured I would try adding this to the CMake includes:
+
+
+link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib)
+SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
+include_directories(include ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include)
+
+
+By modifying the LED.msg to include an id varible I based on the function setLedColor() where i spotted the id value.
+I was able to make a controller for the light by simply publishing an RGB value with an id to the msg type.
+A neat little feature rather than setting preset block colours.

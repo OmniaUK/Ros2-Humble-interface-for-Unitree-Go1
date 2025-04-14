@@ -1,0 +1,25 @@
+This SDK was the the foundation of this project being succesfull.
+
+Extensive amounts of time were spent learning and reverse engineering aspects of this SDK where the included Documentation often fell short.
+
+Inital plan:
+Using the msg types from Ros-to-real package provided by unitree for running the go1 in a simulator I was going to map all the msg types to
+ publishers and subscribers of various topics.
+
+While finishing the highcmd msgs i discovered an issue where I could not get the data out as a result of rviz not understanding the customer msg types.
+As being able to use RVIZ was a key goal of this project. I had two options to fix.
+
+1. Create a RVIZ mapping node.
+  This would be a node running to simply subscribe to the msg types and publish the data we want to the sensor_msgs package.
+  This came at the cost of repeating the process of mapping msg A to msg B which was done for the SDK's once they started talking.
+
+
+2. remap the msgs to the sensor_msgs.
+  This would be a tedius process but. One that would just make it work.
+  This would come at the cost of completely removing backwards compatibility with the ros-to-real package, though they had already been modified due to ROS2 formatting rules.
+
+
+My choice was option 2. Just seemed like less of a headache. and would ensure RVIZ worked natively.
+It would also make it easier for ROS2 developers to just pick up and use. as sensor_msgs is a standard package that is part of ROS2.
+
+Looking back. I wish I had looked more at RVIZ during the design and planning phase.

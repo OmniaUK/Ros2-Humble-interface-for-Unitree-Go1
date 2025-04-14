@@ -44,3 +44,8 @@ When creating the UnitreeCamera object there is a constructor overload detailed 
 This was the important factor in being able to set up the camera configuration so that i could set the parameters without trying to guess or sift through all the specs to apply. This was the breakthrough in getting the camera object working, and saving alot of time.
 I discovered the use of how to do this in the example files:
 	UnitreeCamera cam("stereo_camera_config.yaml"); ///< init UnitreeCamera object by config file
+
+
+
+For some reason Unitree has 3 .a files that link with eachother and hold a hidden dependancy for udev.
+This is why it was added to the dependancy list of the repo.
