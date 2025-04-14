@@ -73,6 +73,13 @@ link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
 
+SET(LEGGED_LIB ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
+SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
+SET(ULTRASOUND_LIB ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano/libultraSound_SDK.so)
+SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_camera.a)
+SET(SYSTEMLOG_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libsystemlog.a) # Additional library for camera SDK
+SET(V4L2_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libtstc_V4L2_xu_camera.a) # Additional library for camera SDK
+
 
 #
 # Include SDK's header files
@@ -83,10 +90,6 @@ include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-SET(LEGGED_LIB ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
-SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
-SET(ULTRASOUND_LIB ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano/libultraSound_SDK.so)
-SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_camera.a)
 
 #
 # Create executables
@@ -148,11 +151,14 @@ target_link_libraries(face_light_controller
 )
 
 target_link_libraries(stereo_camera
-  ${CAMERA_LIB} # CameraSDK
-  ${OpenCV_LIBS} # OpenCV include
-  "${cpp_typesupport_target}" # msg include
   pthread
   rt
+  ${CAMERA_LIB} # CameraSDK
+  ${OpenCV_LIBS} # OpenCV include
+  ${SYSTEMLOG_LIB} # Additional CameraSDK include
+  ${V4L2_LIB} # Additional CameraSDK include
+  udev
+  "${cpp_typesupport_target}" # msg include
 )
 
 target_link_libraries(chase
