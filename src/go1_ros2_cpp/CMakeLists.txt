@@ -71,11 +71,11 @@ rosidl_get_typesupport_target(cpp_typesupport_target "${PROJECT_NAME}" "rosidl_t
 link_directories(${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib)
 link_directories(${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64)
-link_directories(${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
+#link_directories(${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
 
 SET(LEGGED_LIB ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/lib/cpp/amd64/libunitree_legged_sdk.a)
 SET(FACELED_LIB ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib/libfaceLight_SDK_amd64.so)
-SET(ULTRASOUND_LIB ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano/libultraSound_SDK.so)
+#SET(ULTRASOUND_LIB ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano/libultraSound_SDK.so)
 SET(CAMERA_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libunitree_camera.a)
 SET(SYSTEMLOG_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libsystemlog.a) # Additional library for camera SDK
 SET(V4L2_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libtstc_V4L2_xu_camera.a) # Additional library for camera SDK
@@ -96,6 +96,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 #
 add_executable(legged_controller src/legged_controller.cpp)
 add_executable(face_light_controller src/face_light_controller.cpp)
+add_executable(ultrasound_controller src/ultrasound_controller.cpp)
 add_executable(stereo_camera src/stereo_camera.cpp)
 # Examples
 add_executable(chase src/Examples/chase.cpp)
@@ -106,7 +107,8 @@ add_executable(chase src/Examples/chase.cpp)
 ament_export_dependencies(rosidl_default_runtime) # msg export
 
 ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs)
-ament_target_dependencies(face_light_controller rclcpp std_msgs)
+ament_target_dependencies(face_light_controller rclcpp)
+ament_target_dependencies(ultrasound_controller rclcpp sensor_msgs)
 ament_target_dependencies(stereo_camera rclcpp sensor_msgs)
 ament_target_dependencies(chase rclcpp std_msgs)
 
@@ -126,6 +128,7 @@ install(
 install(TARGETS 
   legged_controller
   face_light_controller
+  # ultrasound_controller 
   stereo_camera
   # Example programs
   chase
@@ -149,6 +152,12 @@ target_link_libraries(face_light_controller
   pthread
   rt
 )
+
+# target_link_libraries(ultrasound_controller
+#   ${ULTRASOUND_LIB} # ultrasound SDK
+#   pthread
+#   rt
+# )
 
 target_link_libraries(stereo_camera
   pthread
