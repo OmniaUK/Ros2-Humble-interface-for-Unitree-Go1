@@ -117,12 +117,17 @@ private:
     message.row_step = message.point_step * message.width;
     message.data.resize(message.row_step);
 
+    // Take the data from raw collected data. then format to msg type.
+    // Using pointers for speed and memory space savings.
     uint8_t *ptr = message.data.data();
     for (const auto &pt : pointCloud_RAW)
     {
+      // Set X,Y,Z Points
       float x = pt.pts[0];
       float y = pt.pts[1];
       float z = pt.pts[2];
+      // Appy colour to points
+      // Had to re-order them from the PCLType (BGR) to standard RGB order.
       uint8_t r = pt.clr[2];
       uint8_t g = pt.clr[1];
       uint8_t b = pt.clr[0];
