@@ -59,7 +59,12 @@ sudo ./b2 install
 ```
 To Do
 ```
-
+- udev
+```
+# In terminal:
+sudo apt update
+sudo apt install libudev-dev
+```
 # How to install
 To Do...
 
