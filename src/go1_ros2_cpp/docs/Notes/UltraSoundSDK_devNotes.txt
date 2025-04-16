@@ -20,3 +20,10 @@ So unlike the faceLight_SDK there does not exist an amd64 type.
 
 Only way to get the ultrasonic sensors working on this system would be to run the ROS node on the nano directly.
 The data could then be captured and brought up to ROS2 via a ROS Bridge. This process due to time constraints was outside of scope for this project.
+
+
+
+Further to this. I had discovered that the Go1 im working on. does not have ultrasonic sensors. just some plastic blanks.
+That would explain a bit...
+NOTE: Always look at your hardware closely! Not just the software.
+Rather ironic since my day job is an Engineer fixing machines..
