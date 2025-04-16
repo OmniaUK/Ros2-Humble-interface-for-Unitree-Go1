@@ -87,7 +87,7 @@ SET(V4L2_LIB ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/lib/amd64/libtstc_V4L2_xu_
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include)
 include_directories(include ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include)
-include_directories(include ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
+#include_directories(include ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 
@@ -96,7 +96,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 #
 add_executable(legged_controller src/legged_controller.cpp)
 add_executable(face_light_controller src/face_light_controller.cpp)
-add_executable(ultrasound_controller src/ultrasound_controller.cpp)
+#add_executable(ultrasound_controller src/ultrasound_controller.cpp)
 add_executable(stereo_camera src/stereo_camera.cpp)
 # Examples
 add_executable(chase src/Examples/chase.cpp)
@@ -108,7 +108,7 @@ ament_export_dependencies(rosidl_default_runtime) # msg export
 
 ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs)
 ament_target_dependencies(face_light_controller rclcpp)
-ament_target_dependencies(ultrasound_controller rclcpp sensor_msgs)
+#ament_target_dependencies(ultrasound_controller rclcpp sensor_msgs)
 ament_target_dependencies(stereo_camera rclcpp sensor_msgs)
 ament_target_dependencies(chase rclcpp std_msgs)
 
@@ -118,7 +118,7 @@ install(
   ${CMAKE_SOURCE_DIR}/sdk/unitree_legged_sdk/include 
   ${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/include
   ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include
-  ${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano
+  #${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano
   DESTINATION include
 )
 
