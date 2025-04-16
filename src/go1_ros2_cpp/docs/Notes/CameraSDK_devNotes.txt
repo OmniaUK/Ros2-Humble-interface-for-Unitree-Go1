@@ -71,3 +71,8 @@ So just before calling it "out of scope for the project" I ssh'd into the 3rd na
 AH! theres my issue! 
 Once changing this back to the Pi's Static IP. After a reboot. all the camera data and obsticle avoidance nodes started getting data.
 Always wondered why the obsticle avoidance mode didnt work.
+
+solution approach:
+I dont want to rely on the ros melodic package at all on the pi. The idea is the make it obsolite and disable or even delete it. But. the SDK was built for ROS melodic.
+As the jetson_nano is hardware bound to ubuntu 18.04 (and thus can only run ros melodic) and we have a working publishers on the devices. We can just shut down the pi node subscribing to those topics.
+Then use a rosBridge to subscribe to the msgs and pull them up to Ros2 Humble. This would allow us to remove the Pi node without changing the implemented SDK.
