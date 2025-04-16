@@ -1,0 +1,51 @@
+Camera SDK notes.
+
+Issues:
+Starting a new process that calls on the cameras seems to be blocked.
+Getting a gviewer warning in the terminal stating the pipeline could not be established.
+
+The EDU notes say that the process's running on startup within the jetsons should be killed:
+ "Before using the SDK, you need to kill the built-in program that calls the camera in order to successfully obtain images."
+ ps -aux | grep point_cloud_node | awk '{print $2}' | xargs kill -9
+ ps -aux | grep mqttControlNode | awk '{print $2}' | xargs kill -9
+ ps -aux | grep live_human_pose | awk '{print $2}' | xargs kill -9
+ ps -aux | grep rosnode | awk '{print $2}' | xargs kill -9
+
+However, this simply returns an error saying that the process cannot be found. upon getting the process information to double check the process ID i find the process ID has changed. Likely something further up the chain is keeping that process alive.
+On asking Dr Tomos Fearn if he encountered this issue before, he stated "No" but was able to suggest a possible solution in calling the function killall: https://www.baeldung.com/linux/killall-command-tutorial
+"
+it can be a useful one, Gazebo used to be an issue where it wouldn't close down properly leaving server side nodes running. killall fixed that
+Some notes I wrote down for when ROS stuff hangs 
+
+ps -A | grep gz
+followed by either:
+kill -9 123456
+or
+killall -9 gzclient
+killall -9 gzserver
+" - Tomos Fearn via Discord
+
+Code:
+When creating the UnitreeCamera object there is a constructor overload detailed in the header file. 
+    /**
+      * @overload
+      * @fn UnitreeCamera
+      * @brief UnitreeCamera constructor overload
+      * @details use camera config file to init unitree stereo camera
+      * @param[in] fileName camera config file, include file path, for example: ~/test/stereoConfig.yaml
+      * @param[out] None
+      * @return None
+      * @note 
+      * @code
+      *     UnitreeCamera("path_to/config.yaml");
+      * @endcode
+      */
+      
+This was the important factor in being able to set up the camera configuration so that i could set the parameters without trying to guess or sift through all the specs to apply. This was the breakthrough in getting the camera object working, and saving alot of time.
+I discovered the use of how to do this in the example files:
+	UnitreeCamera cam("stereo_camera_config.yaml"); ///< init UnitreeCamera object by config file
+
+
+
+For some reason Unitree has 3 .a files that link with eachother and hold a hidden dependancy for udev.
+This is why it was added to the dependancy list of the repo.
