@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install_isolated
+
+Name: tf2_kdl
+Description: Description of tf2_kdl
+Version: 0.6.5
+Cflags: -I${prefix}/include -I/usr/local/include/eigen3 -I/home/pi/ros_catkin_ws/install_isolated/share/orocos_kdl/cmake/../../../include
+Libs: -L${prefix}/lib /home/pi/ros_catkin_ws/install_isolated/lib/liborocos-kdl.so.1.4.0
+Requires: 

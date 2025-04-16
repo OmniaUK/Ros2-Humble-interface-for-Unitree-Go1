@@ -1,0 +1,17 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/python_qt_binding.pc
+/opt/ros/melodic/share/python_qt_binding/cmake/python_qt_binding-extras.cmake
+/opt/ros/melodic/share/python_qt_binding/cmake/python_qt_bindingConfig.cmake
+/opt/ros/melodic/share/python_qt_binding/cmake/python_qt_bindingConfig-version.cmake
+/opt/ros/melodic/share/python_qt_binding/package.xml
+/opt/ros/melodic/share/python_qt_binding/cmake/shiboken_helper.cmake
+/opt/ros/melodic/share/python_qt_binding/cmake/sip_configure.py
+/opt/ros/melodic/share/python_qt_binding/cmake/sip_helper.cmake

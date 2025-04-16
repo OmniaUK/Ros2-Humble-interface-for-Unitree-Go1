@@ -1,0 +1,17 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/urdf.pc
+/opt/ros/melodic/share/urdf/cmake/urdfConfig.cmake
+/opt/ros/melodic/share/urdf/cmake/urdfConfig-version.cmake
+/opt/ros/melodic/share/urdf/package.xml
+/opt/ros/melodic/include/urdf/urdfdom_compatibility.h
+/opt/ros/melodic/lib/liburdf.so
+/opt/ros/melodic/include/urdf/model.h
+/opt/ros/melodic/include/urdf/visibility_control.hpp

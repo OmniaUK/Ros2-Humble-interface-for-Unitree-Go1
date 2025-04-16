@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install_isolated
+
+Name: genpy
+Description: Description of genpy
+Version: 0.6.9
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: genmsg

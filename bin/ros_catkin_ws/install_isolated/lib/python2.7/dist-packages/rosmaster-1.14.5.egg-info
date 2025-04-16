@@ -1,0 +1,12 @@
+Metadata-Version: 1.1
+Name: rosmaster
+Version: 1.14.5
+Summary: ROS <a href="http://ros.org/wiki/Master">Master</a> implementation.
+Home-page: http://wiki.ros.org/rosmaster
+Author: Dirk Thomas
+Author-email: dthomas@osrfoundation.org
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN
+Requires: roslib
+Requires: rospkg

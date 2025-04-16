@@ -1,0 +1,8 @@
+setup.py
+src/interactive_markers/__init__.py
+src/interactive_markers/interactive_marker_server.py
+src/interactive_markers/menu_handler.py
+src/interactive_markers.egg-info/PKG-INFO
+src/interactive_markers.egg-info/SOURCES.txt
+src/interactive_markers.egg-info/dependency_links.txt
+src/interactive_markers.egg-info/top_level.txt

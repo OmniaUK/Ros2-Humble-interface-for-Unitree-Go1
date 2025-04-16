@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: python_qt_binding
+Description: Description of python_qt_binding
+Version: 0.4.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

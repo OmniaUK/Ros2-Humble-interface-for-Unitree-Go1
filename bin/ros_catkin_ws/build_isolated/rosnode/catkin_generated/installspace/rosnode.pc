@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: rosnode
+Description: Description of rosnode
+Version: 1.14.5
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

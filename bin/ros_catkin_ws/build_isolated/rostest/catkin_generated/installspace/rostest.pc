@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: rostest
+Description: Description of rostest
+Version: 1.14.5
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib /usr/lib/aarch64-linux-gnu/libboost_system.so /usr/lib/aarch64-linux-gnu/libboost_thread.so -pthread /usr/lib/aarch64-linux-gnu/libboost_chrono.so /usr/lib/aarch64-linux-gnu/libboost_date_time.so /usr/lib/aarch64-linux-gnu/libboost_atomic.so
+Requires: 

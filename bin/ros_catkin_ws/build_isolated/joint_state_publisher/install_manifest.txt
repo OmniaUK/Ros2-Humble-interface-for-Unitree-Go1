@@ -1,0 +1,14 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/joint_state_publisher.pc
+/opt/ros/melodic/share/joint_state_publisher/cmake/joint_state_publisherConfig.cmake
+/opt/ros/melodic/share/joint_state_publisher/cmake/joint_state_publisherConfig-version.cmake
+/opt/ros/melodic/share/joint_state_publisher/package.xml
+/opt/ros/melodic/lib/joint_state_publisher/joint_state_publisher

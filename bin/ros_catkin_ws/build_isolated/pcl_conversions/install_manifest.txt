@@ -1,0 +1,14 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/pcl_conversions.pc
+/opt/ros/melodic/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake
+/opt/ros/melodic/share/pcl_conversions/cmake/pcl_conversionsConfig-version.cmake
+/opt/ros/melodic/share/pcl_conversions/package.xml
+/opt/ros/melodic/include/pcl_conversions/pcl_conversions.h

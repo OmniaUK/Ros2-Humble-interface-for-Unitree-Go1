@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/tf2_eigen
+
+Name: tf2_eigen
+Description: Description of tf2_eigen
+Version: 0.6.5
+Cflags: -I/home/pi/ros_catkin_ws/src/tf2_eigen/include -I/usr/local/include/eigen3
+Libs: -L${prefix}/lib 
+Requires: 

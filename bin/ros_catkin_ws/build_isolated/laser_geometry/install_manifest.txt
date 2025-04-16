@@ -1,0 +1,15 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/laser_geometry.pc
+/opt/ros/melodic/share/laser_geometry/cmake/laser_geometryConfig.cmake
+/opt/ros/melodic/share/laser_geometry/cmake/laser_geometryConfig-version.cmake
+/opt/ros/melodic/share/laser_geometry/package.xml
+/opt/ros/melodic/lib/liblaser_geometry.so
+/opt/ros/melodic/include/laser_geometry/laser_geometry.h

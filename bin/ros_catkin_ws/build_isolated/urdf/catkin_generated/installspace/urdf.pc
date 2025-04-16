@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: urdf
+Description: Description of urdf
+Version: 1.13.2
+Cflags: -I${prefix}/include -I/opt/ros/melodic/lib/urdfdom_headers/cmake/../../../include -I/opt/ros/melodic/include -I/usr/include
+Libs: -L${prefix}/lib -lurdf /opt/ros/melodic/lib/liburdfdom_sensor.so /opt/ros/melodic/lib/liburdfdom_model_state.so /opt/ros/melodic/lib/liburdfdom_model.so /opt/ros/melodic/lib/liburdfdom_world.so /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4 /usr/lib/aarch64-linux-gnu/libboost_thread.so -pthread /usr/lib/aarch64-linux-gnu/libboost_chrono.so /usr/lib/aarch64-linux-gnu/libboost_system.so /usr/lib/aarch64-linux-gnu/libboost_date_time.so /usr/lib/aarch64-linux-gnu/libboost_atomic.so /usr/lib/aarch64-linux-gnu/libtinyxml.so /usr/lib/aarch64-linux-gnu/libtinyxml2.so
+Requires: pluginlib rosconsole_bridge roscpp

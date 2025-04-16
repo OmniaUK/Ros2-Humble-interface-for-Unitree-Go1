@@ -1,0 +1,8 @@
+prefix=/home/pi/catkin_ws/install_isolated
+
+Name: urdf_parser_plugin
+Description: Description of urdf_parser_plugin
+Version: 1.13.2
+Cflags: -I${prefix}/include -I/opt/ros/melodic/lib/urdfdom_headers/cmake/../../../include
+Libs: -L${prefix}/lib 
+Requires: 

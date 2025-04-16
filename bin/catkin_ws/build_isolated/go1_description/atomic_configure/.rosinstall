@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/pi/catkin_ws/devel_isolated/go1_description/setup.sh

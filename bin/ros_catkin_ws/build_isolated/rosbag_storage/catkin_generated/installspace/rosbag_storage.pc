@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: rosbag_storage
+Description: Description of rosbag_storage
+Version: 1.14.5
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lrosbag_storage /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4 /usr/lib/aarch64-linux-gnu/libboost_date_time.so /usr/lib/aarch64-linux-gnu/libboost_filesystem.so /usr/lib/aarch64-linux-gnu/libboost_program_options.so /usr/lib/aarch64-linux-gnu/libboost_regex.so /usr/lib/aarch64-linux-gnu/libboost_system.so
+Requires: pluginlib roslz4

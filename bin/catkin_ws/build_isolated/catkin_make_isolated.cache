@@ -1,0 +1,2 @@
+go1_description:rviz
+-G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/home/pi/catkin_ws/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/pi/catkin_ws/install_isolated

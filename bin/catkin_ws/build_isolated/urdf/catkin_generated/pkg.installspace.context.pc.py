@@ -1,0 +1,8 @@
+# generated from catkin/cmake/template/pkg.context.pc.in
+CATKIN_PACKAGE_PREFIX = ""
+PROJECT_PKG_CONFIG_INCLUDE_DIRS = "${prefix}/include;/opt/ros/melodic/lib/urdfdom_headers/cmake/../../../include;/opt/ros/melodic/include;/usr/include".split(';') if "${prefix}/include;/opt/ros/melodic/lib/urdfdom_headers/cmake/../../../include;/opt/ros/melodic/include;/usr/include" != "" else []
+PROJECT_CATKIN_DEPENDS = "pluginlib;rosconsole_bridge;roscpp".replace(';', ' ')
+PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lurdf;/opt/ros/melodic/lib/liburdfdom_sensor.so;/opt/ros/melodic/lib/liburdfdom_model_state.so;/opt/ros/melodic/lib/liburdfdom_model.so;/opt/ros/melodic/lib/liburdfdom_world.so;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;/usr/lib/aarch64-linux-gnu/libboost_thread.so;-pthread;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;/usr/lib/aarch64-linux-gnu/libboost_system.so;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;/usr/lib/aarch64-linux-gnu/libtinyxml.so;/usr/lib/aarch64-linux-gnu/libtinyxml2.so".split(';') if "-lurdf;/opt/ros/melodic/lib/liburdfdom_sensor.so;/opt/ros/melodic/lib/liburdfdom_model_state.so;/opt/ros/melodic/lib/liburdfdom_model.so;/opt/ros/melodic/lib/liburdfdom_world.so;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;/usr/lib/aarch64-linux-gnu/libboost_thread.so;-pthread;/usr/lib/aarch64-linux-gnu/libboost_chrono.so;/usr/lib/aarch64-linux-gnu/libboost_system.so;/usr/lib/aarch64-linux-gnu/libboost_date_time.so;/usr/lib/aarch64-linux-gnu/libboost_atomic.so;/usr/lib/aarch64-linux-gnu/libtinyxml.so;/usr/lib/aarch64-linux-gnu/libtinyxml2.so" != "" else []
+PROJECT_NAME = "urdf"
+PROJECT_SPACE_DIR = "/home/pi/catkin_ws/install_isolated"
+PROJECT_VERSION = "1.13.2"
