@@ -49,3 +49,30 @@ I discovered the use of how to do this in the example files:
 
 For some reason Unitree has 3 .a files that link with eachother and hold a hidden dependancy for udev.
 This is why it was added to the dependancy list of the repo.
+
+Emailed Unitree after the prvious attempt to get the point cloud from the cameras failed.
+This was the responce i got:
+
+ Is there anything in the Camera SDK that allows be to use the get point cloud over UDP?
+Yes,you could camera SDK to get the point cloud.We have Youtube video to guide client to use,you could search UnitreeSupport.
+Or would I only be able to do this by shutting down the existing processes and using the image tans and get image trans?
+The Camera data is a topic,you could use SDK to subscribe it and get the data.
+For my Ros wrapper while the plan is to eventually have this running locally on the Pi cm4, I'm currently developing on a laptop connected to the Go1's wireless AP. UDP would be the ideal way to call the point cloud and raw image from the camera using your SDK.
+Yes,it is possible.But you need to download OpenCV or Gstreamer in your labtop.Otherwise, you cant get any video stream. 
+
+While putting together what the reply said one thing stuck out.. "The Camera data is a topic,you could use SDK to subscribe it and get the data.".
+Then I remembered a few things:
+- the Ros melodic camera topics were running without any errors, but just sat static as subscribers. No data was being recived.
+- When pointing the ip final segment to my latop to try and get the TX and RX image examples working i Spotted processes that looked like nodes. i.e PointCloud_node
+- Also while trying to get the examples working i noticed when echo'ing the UDP traffic it was empty, like the ros nodes.
+- When changing the last IP segments they all pointed to the jetson_nano with the IP ending in .15
+
+So just before calling it "out of scope for the project" I ssh'd into the 3rd nano (192.168.123.15) only to spot that the config file for the camera TX was pointing at a diffrent IP from the pi.
+AH! theres my issue! 
+Once changing this back to the Pi's Static IP. After a reboot. all the camera data and obsticle avoidance nodes started getting data.
+Always wondered why the obsticle avoidance mode didnt work.
+
+solution approach:
+I dont want to rely on the ros melodic package at all on the pi. The idea is the make it obsolite and disable or even delete it. But. the SDK was built for ROS melodic.
+As the jetson_nano is hardware bound to ubuntu 18.04 (and thus can only run ros melodic) and we have a working publishers on the devices. We can just shut down the pi node subscribing to those topics.
+Then use a rosBridge to subscribe to the msgs and pull them up to Ros2 Humble. This would allow us to remove the Pi node without changing the implemented SDK.
