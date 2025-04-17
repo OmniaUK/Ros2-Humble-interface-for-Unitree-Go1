@@ -5,7 +5,7 @@
 # uint32[2] sn #SN  -- Dont want to change the SN
 # uint32[2] version -- Dont want to change the version
 # uint16 bandwidth #bandWidth # Not in use
-# uint8 mode # Not in use
+uint8 mode
 
 uint8 gait_type #gaitType		   
 # uint8 speed_level #speedLevel # Not in use	   
