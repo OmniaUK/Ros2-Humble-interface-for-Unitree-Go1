@@ -45,7 +45,8 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 #include "rclcpp/rclcpp.hpp" // includes most common libraries for ROS 2
 // https://index.ros.org/p/std_msgs/
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
-#include "geometry_msgs/msg/twist.hpp" // twist msg
+#include "geometry_msgs/msg/twist.hpp" // twist msg https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html
+#include "sensor_msgs/msg/imu.hpp" // IMU msg https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Imu.html
 
 // Unitree ros to real msg's
 // Edited to comply with syntax constraints.
@@ -99,8 +100,52 @@ void UDPLegged::UDPSend()
 {
   udp.Send();
 }
-
 UDPLegged udpLegged(HIGHLEVEL); // object creation for callback
+
+
+/*
+ * UDP loop service node (would be a ros service but running out of time towards the deadline. This is a hotfix)
+ * runs the UDPRecv & UDPSend commands repeatedly.
+ * This is to ensure the latest data is recived.
+*/
+class UDPLoopService : public rclcpp::Node
+{
+public:
+UDPLoopService() 
+  : Node("UDPServer")
+  {
+    RCLCPP_INFO(this->get_logger(), "UDP Server started.");
+    while (1)
+    {
+      udpLegged.UDPSend();
+      udpLegged.UDPRecv();
+
+      if (!udpLegged.udp.accessible)
+      {
+        RCLCPP_INFO(this->get_logger(), "UDP connection lost. \n Trying again in 5 seconds...");
+        sleep(5);
+      }
+      
+    }
+    
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Declaring a new class as a subclass of the ROS 2 Node class
 class LeggedDataRX : public rclcpp::Node
@@ -132,7 +177,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/imu to the topic "/legged_data/sensors/imu"
     // a queue length of 10 is specified here for the topic
-    imu_publisher = this->create_publisher<go1_ros2_cpp::msg::IMU>("/legged_data/sensors/imu", 10);
+    imu_publisher = this->create_publisher<sensor_msgs::msg::Imu>("/legged_data/sensors/imu", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 0.05s
     timer_imu = this->create_wall_timer(
@@ -176,7 +221,7 @@ private:
     if (message.soc == 0)
     {
       // If no battery data is detected, display error warning
-      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR of a compatable firmware \n Low battery safe shutdown: Offline");
+      RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR of a compatable firmware");
     }
 
     // Remove on release
@@ -198,9 +243,6 @@ private:
     // Create an instance of the HighState message type
     auto message = go1_ros2_cpp::msg::HighState();
 
-    udpLegged.UDPSend();
-    udpLegged.UDPRecv(); // Fetch the latest state
-
     message.foot_force = udpLegged.state.footForce;
     message.foot_force_est = udpLegged.state.footForceEst;
 
@@ -220,22 +262,31 @@ private:
    * IMU Data publisher
    * Takes IMU data and updates the msg with latest imu data
    */
-  void imu_callback()
+  void imu_callback() // when under accelerated motion, the attitude of the robot calculated by IMU will drift.
   {
     // Create an instance of the IMU message type
-    auto message = go1_ros2_cpp::msg::IMU();
+    auto message = sensor_msgs::msg::Imu();
 
-    udpLegged.UDPSend();
-    udpLegged.UDPRecv(); // Fetch the latest state
+    // geometry_msgs/Quaternion orientation
+    message.orientation.w = udpLegged.state.imu.quaternion[0];
+    message.orientation.x = udpLegged.state.imu.quaternion[1];
+    message.orientation.y = udpLegged.state.imu.quaternion[2];
+    message.orientation.z = udpLegged.state.imu.quaternion[3];
 
-    message.quaternion = udpLegged.state.imu.quaternion;
-    message.gyroscope = udpLegged.state.imu.gyroscope;
-    message.accelerometer = udpLegged.state.imu.accelerometer;
-    message.rpy = udpLegged.state.imu.rpy;
-    message.temperature = udpLegged.state.imu.temperature;
+    // geometry_msgs/Vector3 angular_velocity
+    message.angular_velocity.x = udpLegged.state.imu.gyroscope[0];
+    message.angular_velocity.y = udpLegged.state.imu.gyroscope[1];
+    message.angular_velocity.z = udpLegged.state.imu.gyroscope[2];
 
-    // Remove on release
-    RCLCPP_INFO(this->get_logger(), "System Temp(C): %i", message.temperature);
+    // geometry_msgs/Vector3 linear_acceleration
+    message.linear_acceleration.x = udpLegged.state.imu.accelerometer[0];
+    message.linear_acceleration.y = udpLegged.state.imu.accelerometer[0];
+    message.linear_acceleration.z = udpLegged.state.imu.accelerometer[0];
+
+    // Not in use by sensor_msgs/Imu
+    // message.rpy = udpLegged.state.imu.rpy;
+    // message.temperature = udpLegged.state.imu.temperature;
+
 
     // publish the message created above to the topic /legged_data/sensors/imu
     imu_publisher->publish(message);
@@ -243,7 +294,7 @@ private:
 
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_imu;
-  rclcpp::Publisher<go1_ros2_cpp::msg::IMU>::SharedPtr imu_publisher;
+  rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_publisher;
 
   /*
    * Mode Data publisher
@@ -254,8 +305,6 @@ private:
     // Create an instance of the HighState message type
     auto message = go1_ros2_cpp::msg::HighState();
 
-    udpLegged.UDPSend();
-    udpLegged.UDPRecv(); // Fetch the latest state
 
     // Set latest known mode to msg
     message.mode = udpLegged.state.mode;
@@ -350,9 +399,12 @@ int main(int argc, char *argv[])
    */
   rclcpp::executors::MultiThreadedExecutor executor;
   auto leggedDataNode = std::make_shared<LeggedDataRX>();
-  auto LeggedControlNode = std::make_shared<LeggedControl>();
+  auto leggedControlNode = std::make_shared<LeggedControl>();
+  auto udpServer = std::make_shared<UDPLoopService>();
+
+  executer.add_node(udpServer);
   executor.add_node(leggedDataNode);
-  executor.add_node(LeggedControlNode);
+  executor.add_node(leggedControlNode);
   executor.spin();
 
   // When the node is terminated, shut down ROS 2 for this node
