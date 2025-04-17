@@ -47,13 +47,12 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
 #include "geometry_msgs/msg/twist.hpp" // twist msg https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html
 #include "sensor_msgs/msg/imu.hpp" // IMU msg https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Imu.html
-
+#include "sensor_msgs/msg/temperature.hpp" // Temprature msg
 // Unitree ros to real msg's
 // Edited to comply with syntax constraints.
 #include "go1_ros2_cpp/msg/bms_state.hpp"
 #include "go1_ros2_cpp/msg/high_state.hpp"
 #include "go1_ros2_cpp/msg/high_cmd.hpp"
-#include "go1_ros2_cpp/msg/imu.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
@@ -130,22 +129,14 @@ UDPLoopService()
     
   }
 };
+// End of UDP setup
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+// Start of Ros Nodes
 
 // Declaring a new class as a subclass of the ROS 2 Node class
 class LeggedDataRX : public rclcpp::Node
@@ -165,6 +156,7 @@ public:
     timer_bms = this->create_wall_timer(
         650ms, std::bind(&LeggedDataRX::bms_callback, this));
 
+
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/bms"
     // a queue length of 10 is specified here for the topic
@@ -174,8 +166,9 @@ public:
     timer_foot_force = this->create_wall_timer(
         150ms, std::bind(&LeggedDataRX::footForce_callback, this));
 
+
     // Create the instance of the publisher that will publish messages
-    // of type go1_ros2_cpp/msg/imu to the topic "/legged_data/sensors/imu"
+    // of type sensor_msgs/msg/IMU to the topic "/legged_data/sensors/imu"
     // a queue length of 10 is specified here for the topic
     imu_publisher = this->create_publisher<sensor_msgs::msg::Imu>("/legged_data/sensors/imu", 10);
     // Create a timer that will trigger calls to the method imu_callback
@@ -183,16 +176,28 @@ public:
     timer_imu = this->create_wall_timer(
         50ms, std::bind(&LeggedDataRX::imu_callback, this));
 
+
     // Create the instance of the publisher that will publish messages
-    // of type go1_ros2_cpp/msg/imu to the topic "/legged_data/status/mode"
+    // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/mode"
     // a queue length of 10 is specified here for the topic
     mode_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/mode", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 0.65s
     timer_mode = this->create_wall_timer(
         650ms, std::bind(&LeggedDataRX::mode_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type geomotry_msgs/pose to the topic "/odom"
+    // a queue length of 10 is specified here for the topic
+    temp_publisher = this->create_publisher<sensor_msgs::msg::Temperature>("/legged_data/sensors/system_temperature", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 1.0s
+    timer_temp = this->create_wall_timer(
+        1000ms, std::bind(&LeggedDataRX::temp_callback, this));
   }
 
+
+// topic Callbacks
 private:
   /*
    * BMS Data publisher
@@ -218,14 +223,12 @@ private:
     message.mcu_ntc = udpLegged.state.bms.MCU_NTC;       // Temp output in degrees C
 
     // Check if the battery is reporting data
+    // if the battery SOC was ever actually at 0, the robot would be off & not boot in the first place
     if (message.soc == 0)
     {
       // If no battery data is detected, display error warning
       RCLCPP_WARN(this->get_logger(), "WARNING: Battery Management System \n Data: OutOfExpectedBounds: Please ensure a healthy battery is installed OR of a compatable firmware");
     }
-
-    // Remove on release
-    RCLCPP_INFO(this->get_logger(), "Battery at: %i%%", message.soc);
 
     // publish the message created above to the topic /legged_data/sensors/bms
     bms_publisher->publish(message);
@@ -320,8 +323,38 @@ private:
   rclcpp::TimerBase::SharedPtr timer_mode;
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr mode_publisher;
 
+  /*
+   * Mode Data publisher
+   * Takes HighState data and updates the msg with latest mode data
+   */
+  void temp_callback()
+  {
+    // Create an instance of the HighState message type
+    auto message = sensor_msgs::msg::Temperature();
+
+
+    // Set latest known mode to msg
+    message.temperature = udpLegged.state.imu.temperature
+
+    // publish the message created above to the topic /legged_data/status/mode
+    mode_publisher->publish(message);
+  }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_temp;
+  rclcpp::Publisher<sensor_msgs::msg::Temperature>::SharedPtr temp_publisher;
+
   size_t count_;
 };
+
+
+
+
+
+
+
+
+
 
 // Declaring a new class as a subclass of the ROS 2 Node class
 class LeggedControl : public rclcpp::Node
