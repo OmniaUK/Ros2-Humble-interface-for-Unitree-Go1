@@ -114,24 +114,23 @@ UDPLegged udpLegged(HIGHLEVEL); // object creation for callback
 class UDPLoopService : public rclcpp::Node
 {
 public:
-UDPLoopService() 
-  : Node("UDPServer")
-  {
-    RCLCPP_INFO(this->get_logger(), "UDP Server started.");
-    while (1)
+  UDPLoopService() 
+    : Node("UDPServer")
     {
-      udpLegged.UDPSend();
-      udpLegged.UDPRecv();
+      RCLCPP_INFO(this->get_logger(), "UDP Server started.");
 
-      if (!udpLegged.udp.accessible)
-      {
-        RCLCPP_INFO(this->get_logger(), "UDP connection lost. \n Trying again in 5 seconds...");
-        sleep(5);
-      }
-      
+      // Start timer loop to update the UDP data
+        timer_udp = this->create_wall_timer(
+            3ms, std::bind(&UDPLoopService::udp_callback, this));
+        
     }
-    
+  private:
+  void udp_callback()
+  {
+    udpLegged.UDPSend();
+    udpLegged.UDPRecv();
   }
+  rclcpp::TimerBase::SharedPtr timer_udp;
 };
 // End of UDP setup
 
@@ -186,9 +185,9 @@ public:
     // a queue length of 10 is specified here for the topic
     mode_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/mode", 10);
     // Create a timer that will trigger calls to the method imu_callback
-    // every 0.65s
+    // every 0.7s
     timer_mode = this->create_wall_timer(
-        650ms, std::bind(&LeggedDataRX::mode_callback, this));
+        700ms, std::bind(&LeggedDataRX::mode_callback, this));
 
 
     // Create the instance of the publisher that will publish messages
