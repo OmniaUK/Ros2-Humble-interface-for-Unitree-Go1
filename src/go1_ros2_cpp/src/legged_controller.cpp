@@ -108,7 +108,7 @@ UDPLegged udpLegged(HIGHLEVEL); // object creation for callback
 
 /*
  * UDP loop service node (would be a ros service but running out of time towards the deadline. This is a hotfix)
- * runs the UDPRecv & UDPSend commands repeatedly.
+ * runs the UDPRecv & UDPSend commands repeatedly. (Will automatically reconnect once the robot is seen on network again)
  * This is to ensure the latest data is recived.
 */
 class UDPLoopService : public rclcpp::Node
@@ -218,6 +218,17 @@ public:
     // every 0.7s
     timer_gait = this->create_wall_timer(
         700ms, std::bind(&LeggedDataRX::gait_callback, this));
+
+
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/about_go1"
+    // a queue length of 10 is specified here for the topic
+    about_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/about_go1", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 60s
+    timer_about = this->create_wall_timer(
+        60s, std::bind(&LeggedDataRX::about_callback, this));
   }
 
 
@@ -261,6 +272,8 @@ private:
   rclcpp::TimerBase::SharedPtr timer_bms;
   rclcpp::Publisher<go1_ros2_cpp::msg::BmsState>::SharedPtr bms_publisher;
 
+
+
   /*
    * FootForce Data publisher
    * Takes HighState data and updates the msg with latest foot force sensor data
@@ -280,6 +293,8 @@ private:
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_foot_force;
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr foot_force_publisher;
+
+
 
   /*
    * IMU Data publisher
@@ -319,6 +334,8 @@ private:
   rclcpp::TimerBase::SharedPtr timer_imu;
   rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_publisher;
 
+
+
   /*
    * Mode Data publisher
    * Takes HighState data and updates the msg with latest mode data
@@ -332,8 +349,6 @@ private:
     // Set latest known mode to msg
     message.mode = udpLegged.state.mode;
 
-    // Remove on release
-    RCLCPP_INFO(this->get_logger(), "System mode: %i", message.mode);
 
     // publish the message created above to the topic /legged_data/status/mode
     mode_publisher->publish(message);
@@ -342,6 +357,8 @@ private:
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_mode;
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr mode_publisher;
+
+
 
   /*
    * Temprature Data publisher
@@ -417,8 +434,6 @@ private:
     // Set latest known mode to msg
     message.gait_type = udpLegged.state.gaitType;
 
-    // Remove on release
-    RCLCPP_INFO(this->get_logger(), "System mode: %i", message.mode);
 
     // publish the message created above to the topic /legged_data/status/gait_type
     mode_publisher->publish(message);
@@ -427,6 +442,33 @@ private:
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_gait;
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr gait_publisher;
+
+
+
+  /*
+   * About_Go1 Data publisher
+   * Takes HighState data and updates the msg with latest about data
+   */
+  void about_callback()
+  {
+    // Create an instance of the HighState message type
+    auto message = go1_ros2_cpp::msg::HighState();
+
+
+    // Set latest known mode to msg
+    message.sn = udpLegged.state.SN;
+    message.version = udpLegged.state.version;
+    message.bandwidth = udpLegged.state.bandWidth;
+
+
+    // publish the message created above to the topic /legged_data/status/gait_type
+    mode_publisher->publish(message);
+  }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_about;
+  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr about_publisher;
+
 
   size_t count_;
 };
@@ -489,9 +531,6 @@ private:
    */
   void cmdMode_callback(const go1_ros2_cpp::msg::HighCmd &msg)
   {
-
-    // Remove on release
-    RCLCPP_INFO(this->get_logger(), "I heard: msg.data=%i", msg.mode);
 
     udpLegged.cmd.mode = msg.mode;
 
