@@ -46,8 +46,12 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 // https://index.ros.org/p/std_msgs/
 // https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html
 #include "geometry_msgs/msg/twist.hpp" // twist msg https://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html
+
 #include "sensor_msgs/msg/imu.hpp" // IMU msg https://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Imu.html
 #include "sensor_msgs/msg/temperature.hpp" // Temprature msg
+
+#include "nav_msgs/msg/odometry.hpp" // Odom msg https://docs.ros.org/en/jade/api/nav_msgs/html/msg/Odometry.html
+
 // Unitree ros to real msg's
 // Edited to comply with syntax constraints.
 #include "go1_ros2_cpp/msg/bms_state.hpp"
@@ -186,14 +190,25 @@ public:
     timer_mode = this->create_wall_timer(
         650ms, std::bind(&LeggedDataRX::mode_callback, this));
 
+
     // Create the instance of the publisher that will publish messages
-    // of type geomotry_msgs/pose to the topic "/odom"
+    // of type sensor_msgs/Temperature to the topic "/legged_data/sensors/system_temperature"
     // a queue length of 10 is specified here for the topic
     temp_publisher = this->create_publisher<sensor_msgs::msg::Temperature>("/legged_data/sensors/system_temperature", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 1.0s
     timer_temp = this->create_wall_timer(
         1000ms, std::bind(&LeggedDataRX::temp_callback, this));
+
+        
+    // Create the instance of the publisher that will publish messages
+    // of type nav_msgs/Odometry to the topic "/odom"
+    // a queue length of 10 is specified here for the topic
+    odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 0.15s
+    timer_odom = this->create_wall_timer(
+        150ms, std::bind(&LeggedDataRX::odom_callback, this));
   }
 
 
@@ -247,11 +262,7 @@ private:
     auto message = go1_ros2_cpp::msg::HighState();
 
     message.foot_force = udpLegged.state.footForce;
-    message.foot_force_est = udpLegged.state.footForceEst;
-
-    // Remove on release
-    RCLCPP_INFO(this->get_logger(), "foot pressure: %d, %d, %d, %d", message.foot_force[0],
-                message.foot_force[1], message.foot_force[2], message.foot_force[3]);
+    // message.foot_force_est = udpLegged.state.footForceEst; // Disabled as was showing 0 
 
     // publish the message created above to the topic /legged_data/sensors/foot_force
     foot_force_publisher->publish(message);
@@ -283,8 +294,8 @@ private:
 
     // geometry_msgs/Vector3 linear_acceleration
     message.linear_acceleration.x = udpLegged.state.imu.accelerometer[0];
-    message.linear_acceleration.y = udpLegged.state.imu.accelerometer[0];
-    message.linear_acceleration.z = udpLegged.state.imu.accelerometer[0];
+    message.linear_acceleration.y = udpLegged.state.imu.accelerometer[1];
+    message.linear_acceleration.z = udpLegged.state.imu.accelerometer[2];
 
     // Not in use by sensor_msgs/Imu
     // message.rpy = udpLegged.state.imu.rpy;
@@ -324,25 +335,63 @@ private:
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr mode_publisher;
 
   /*
-   * Mode Data publisher
-   * Takes HighState data and updates the msg with latest mode data
+   * Temprature Data publisher
+   * Takes IMU temp data and updates the msg with latest temprature data
    */
   void temp_callback()
   {
-    // Create an instance of the HighState message type
+    // Create an instance of the Temperature message type
     auto message = sensor_msgs::msg::Temperature();
 
 
-    // Set latest known mode to msg
-    message.temperature = udpLegged.state.imu.temperature
+    // Set latest to msg
+    message.temperature = udpLegged.state.imu.temperature;
 
-    // publish the message created above to the topic /legged_data/status/mode
-    mode_publisher->publish(message);
+    // publish the message created above to the topic /legged_data/sensors/system_temperature
+    temp_publisher->publish(message);
   }
 
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_temp;
   rclcpp::Publisher<sensor_msgs::msg::Temperature>::SharedPtr temp_publisher;
+
+  
+
+  /*
+   * Odom Data publisher
+   * Takes HighState velocity data and updates the msg with latest odom data
+   */
+  void odom_callback()
+  {
+    // Create an instance of the Odometry message type
+    auto message = nav_msgs::msg::Odometry();
+
+
+    // Set latest to msg
+    //geometry_msgs/TwistWithCovariance twist
+    message.twist.twist.linear.x = udpLegged.state.velocity[0];
+    message.twist.twist.linear.y = udpLegged.state.velocity[1];
+    message.twist.twist.linear.z = udpLegged.state.velocity[2];
+
+    message.twist.twist.angular.z = udpLegged.state.yawSpeed;
+
+    //geometry_msgs/PoseWithCovariance pose
+    message.pose.pose.orientation.w = udpLegged.state.imu.quaternion[0];
+    message.pose.pose.orientation.x = udpLegged.state.imu.quaternion[1];
+    message.pose.pose.orientation.y = udpLegged.state.imu.quaternion[2];
+    message.pose.pose.orientation.z = udpLegged.state.imu.quaternion[3];
+
+    message.pose.pose.position.x = udpLegged.state.position[0];
+    message.pose.pose.position.y = udpLegged.state.position[1];
+    message.pose.pose.position.z = udpLegged.state.position[2];
+
+    // publish the message created above to the topic /odom
+    odom_publisher->publish(message);
+  }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_odom;
+  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
 
   size_t count_;
 };
@@ -389,8 +438,7 @@ private:
     RCLCPP_INFO(this->get_logger(), "I heard: msg.data=%f  and  %f", msg.linear.x, msg.angular.z);
     udpLegged.cmd.velocity[0] = msg.linear.x; // Forward / backward motion
     udpLegged.cmd.velocity[1] = msg.linear.y; // Left / right motion
-
-    udpLegged.cmd.bodyHeight = msg.linear.z; // Vertical height
+    udpLegged.cmd.velocity[3] = msg.linear.z; // Vertical / up & down
 
     udpLegged.cmd.yawSpeed = msg.angular.z; // Rotation in rad/s
 
@@ -435,7 +483,7 @@ int main(int argc, char *argv[])
   auto leggedControlNode = std::make_shared<LeggedControl>();
   auto udpServer = std::make_shared<UDPLoopService>();
 
-  executer.add_node(udpServer);
+  executor.add_node(udpServer);
   executor.add_node(leggedDataNode);
   executor.add_node(leggedControlNode);
   executor.spin();

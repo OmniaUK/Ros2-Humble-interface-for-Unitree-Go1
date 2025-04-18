@@ -103,7 +103,7 @@ add_executable(chase src/Examples/chase.cpp)
 #
 ament_export_dependencies(rosidl_default_runtime) # msg export
 
-ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs sensor_msgs)
+ament_target_dependencies(legged_controller rclcpp std_msgs geometry_msgs sensor_msgs nav_msgs)
 ament_target_dependencies(face_light_controller rclcpp)
 #ament_target_dependencies(ultrasound_controller rclcpp sensor_msgs)
 ament_target_dependencies(stereo_camera rclcpp sensor_msgs)
