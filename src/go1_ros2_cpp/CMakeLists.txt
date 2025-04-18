@@ -51,8 +51,11 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/BmsState.msg"
   "msg/HighCmd.msg"
+  "msg/IMU.msg"
+  "msg/BmsCmd.msg"
   "msg/HighState.msg"
   "msg/LED.msg"
+  "msg/Cartesian.msg"
   "msg/LowCmd.msg"
   "msg/LowState.msg"
   "msg/MotorState.msg"
