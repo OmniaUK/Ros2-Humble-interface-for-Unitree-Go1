@@ -410,7 +410,7 @@ class LeggedControl : public rclcpp::Node
 public:
   // Constructor specifying node name for superclass
   LeggedControl()
-      : Node("legged_control")
+      : Node("LeggedDataTX")
   {
 
     // Create the instance of the twist subscriber that will receive messages
