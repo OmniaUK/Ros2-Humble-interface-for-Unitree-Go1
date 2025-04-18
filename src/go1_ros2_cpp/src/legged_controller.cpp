@@ -208,6 +208,16 @@ public:
     // every 0.15s
     timer_odom = this->create_wall_timer(
         150ms, std::bind(&LeggedDataRX::odom_callback, this));
+
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/gait_type"
+    // a queue length of 10 is specified here for the topic
+    gait_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/gait_type", 10);
+    // Create a timer that will trigger calls to the method imu_callback
+    // every 0.7s
+    timer_gait = this->create_wall_timer(
+        700ms, std::bind(&LeggedDataRX::gait_callback, this));
   }
 
 
@@ -391,6 +401,32 @@ private:
   // Declaration of private fields used for timer, publisher and counter
   rclcpp::TimerBase::SharedPtr timer_odom;
   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
+
+
+
+  /*
+   * Gait_type Data publisher
+   * Takes HighState data and updates the msg with latest gait_type data
+   */
+  void gait_callback()
+  {
+    // Create an instance of the HighState message type
+    auto message = go1_ros2_cpp::msg::HighState();
+
+
+    // Set latest known mode to msg
+    message.gait_type = udpLegged.state.gaitType;
+
+    // Remove on release
+    RCLCPP_INFO(this->get_logger(), "System mode: %i", message.mode);
+
+    // publish the message created above to the topic /legged_data/status/gait_type
+    mode_publisher->publish(message);
+  }
+
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_gait;
+  rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr gait_publisher;
 
   size_t count_;
 };
