@@ -1,0 +1,17 @@
+Critical evaluaiton notes:
+
+
+Methodology- 
+The approach of Spiral may not have been the best approach here. Or ive misinterprited "Iteration at the end of each loop" as building on the features as we go, rather than building improvements on what already is there.
+Though for a comprehensive wrapper, as was the scope of this project, this would have made each spiral far too large to run repeatedly.
+Felt like a greedy approach to algorythms more than a PLM. Likely my fault?
+
+How would i have done it again?
+Using an agile approach with hiensight of the ever growing and changing understanding of the SDK as at each week I was discovering further capabilities or limitations with each SDK. 
+Tomos Fearn as the product owner, Patricia as the Scrum master? & the requirements / storys made as the test basis. This really helps my understanding of not just how to be in an agile development life-cylce but also how I as a project manager or team leader could apply this to a commercial project.
+
+
+Time management -
+Knowing when to stop diving down a rabbit hole.
+This started out well. after spending a week trying to get the ros 1 system working, to create a ros_bridge. Even though i found the solution in the end. I had decided to stop and choose another path when figuring out how to interface with the robots SDK.
+It later seemed to be a struggle when i found myself trying to dive into rabbit holes. For example the Camera SDK that took 4 weeks to get working. & the ultrasonic_SDK that was hardware not actually on the robot.
