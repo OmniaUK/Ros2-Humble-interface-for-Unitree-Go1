@@ -151,7 +151,7 @@ public:
       : Node("LeggedDataRX"), count_(0)
   {
     // Create the instance of the publisher that will publish messages
-    // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/bms"
+    // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/sensors/bms"
     // a queue length of 10 is specified here for the topic
     bms_publisher = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
     // Create a timer that will trigger calls to the method bms_callback
@@ -161,7 +161,7 @@ public:
 
 
     // Create the instance of the publisher that will publish messages
-    // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/bms"
+    // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/sensors/foot_force"
     // a queue length of 10 is specified here for the topic
     foot_force_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
     // Create a timer that will trigger calls to the method footForce_callback
