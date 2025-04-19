@@ -220,7 +220,6 @@ public:
         700ms, std::bind(&LeggedDataRX::gait_callback, this));
 
 
-
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/about_go1"
     // a queue length of 10 is specified here for the topic
@@ -229,6 +228,7 @@ public:
     // every 60s
     timer_about = this->create_wall_timer(
         60s, std::bind(&LeggedDataRX::about_callback, this));
+
 
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/foot_raise_height"
@@ -403,6 +403,14 @@ private:
 
 
     // Set latest to msg
+
+    //header
+    message.header.frame_id = "odom";
+    message.child_frame_id = "base_link";
+    message.header.stamp = get_clock()->now(); // set time of data capture
+    
+
+
     //geometry_msgs/TwistWithCovariance twist
     message.twist.twist.linear.x = udpLegged.state.velocity[0];
     message.twist.twist.linear.y = udpLegged.state.velocity[1];
@@ -524,16 +532,24 @@ public:
   {
 
     // Create the instance of the twist subscriber that will receive messages
-    // of type geometry_msgs::msg::Twist published to the topic "/cmd_vel"
+    // of type geometry_msgs/msg/Twist published to the topic "/cmd_vel"
     // a queue length of 10 is specified here and a reference is given
     subscription_twist = this->create_subscription<geometry_msgs::msg::Twist>(
         "/cmd_vel", 10, std::bind(&LeggedControl::twist_callback, this, std::placeholders::_1));
 
+
     // Create the instance of the mode subscriber that will receive messages
-    // of type  published to the topic "/cmd_mode"
+    // of type go1_ros2_cpp/msg/HighCmd published to the topic "/cmd_mode"
     // a queue length of 10 is specified here and a reference is given
     subscription_mode = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
         "/cmd_mode", 10, std::bind(&LeggedControl::cmdMode_callback, this, std::placeholders::_1));
+
+    // Create the instance of the mode subscriber that will receive messages
+    // of type geometry_msgs/msg/Twist published to the topic "/cmd_mode"
+    // Only in Linear X & Y plane
+    // a queue length of 10 is specified here and a reference is given
+    subscription_twist_pos = this->create_subscription<geometry_msgs::msg::Twist>(
+      "/cmd_pos", 10, std::bind(&LeggedControl::cmdPos_callback, this, std::placeholders::_1));
   }
 
 private:
@@ -549,6 +565,8 @@ private:
     udpLegged.cmd.velocity[1] = msg.linear.y; // Left / right motion
     udpLegged.cmd.velocity[3] = msg.linear.z; // Vertical / up & down
 
+    
+
     udpLegged.cmd.yawSpeed = msg.angular.z; // Rotation in rad/s
 
     udpLegged.udp.SetSend(udpLegged.cmd);
@@ -556,6 +574,8 @@ private:
   }
   // Declaration of private fields used for subscriber
   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_twist;
+
+
 
   /*
    * mode Data subscriber
@@ -571,6 +591,27 @@ private:
   }
   // Declaration of private fields used for subscriber
   rclcpp::Subscription<go1_ros2_cpp::msg::HighCmd>::SharedPtr subscription_mode;
+
+
+
+  /*
+   * mode Data subscriber
+   * Takes HighCmd msg data and sends it via UDP to the robot
+   */
+  void cmdPos_callback(const geometry_msgs::msg::Twist &msg)
+  {
+
+    udpLegged.cmd.position[0] = msg.linear.x;
+    udpLegged.cmd.position[1] = msg.linear.y;
+
+    udpLegged.udp.SetSend(udpLegged.cmd);
+    udpLegged.UDPSend();
+  }
+  // Declaration of private fields used for subscriber
+  rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_twist_pos;
+
+
+
 };
 
 // Main method defining entry point for program
