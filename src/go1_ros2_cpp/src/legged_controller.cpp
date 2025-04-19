@@ -153,7 +153,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/bms_state to the topic "/legged_data/sensors/bms"
     // a queue length of 10 is specified here for the topic
-    bms_publisher = this->create_publisher<go1_ros2_cpp::msg::BmsState>("/legged_data/sensors/bms", 10);
+    bms_publisher = this->create_publisher<go1_ros2_cpp::msg::BmsState>("legged_data/sensors/bms", 10);
     // Create a timer that will trigger calls to the method bms_callback
     // every 0.65s
     timer_bms = this->create_wall_timer(
@@ -163,7 +163,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/high_state to the topic "/legged_data/sensors/foot_force"
     // a queue length of 10 is specified here for the topic
-    foot_force_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/sensors/foot_force", 10);
+    foot_force_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("legged_data/sensors/foot_force", 10);
     // Create a timer that will trigger calls to the method footForce_callback
     // every 0.15s
     timer_foot_force = this->create_wall_timer(
@@ -173,7 +173,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type sensor_msgs/msg/IMU to the topic "/legged_data/sensors/imu"
     // a queue length of 10 is specified here for the topic
-    imu_publisher = this->create_publisher<sensor_msgs::msg::Imu>("/legged_data/sensors/imu", 10);
+    imu_publisher = this->create_publisher<sensor_msgs::msg::Imu>("legged_data/sensors/imu", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 0.05s
     timer_imu = this->create_wall_timer(
@@ -183,7 +183,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/mode"
     // a queue length of 10 is specified here for the topic
-    mode_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/mode", 10);
+    mode_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("legged_data/status/mode", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 0.7s
     timer_mode = this->create_wall_timer(
@@ -193,7 +193,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type sensor_msgs/Temperature to the topic "/legged_data/sensors/system_temperature"
     // a queue length of 10 is specified here for the topic
-    temp_publisher = this->create_publisher<sensor_msgs::msg::Temperature>("/legged_data/sensors/system_temperature", 10);
+    temp_publisher = this->create_publisher<sensor_msgs::msg::Temperature>("legged_data/sensors/system_temperature", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 1.0s
     timer_temp = this->create_wall_timer(
@@ -203,7 +203,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type nav_msgs/Odometry to the topic "/odom"
     // a queue length of 10 is specified here for the topic
-    odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>("/odom", 10);
+    odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>("odom", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 0.15s
     timer_odom = this->create_wall_timer(
@@ -213,7 +213,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/gait_type"
     // a queue length of 10 is specified here for the topic
-    gait_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/gait_type", 10);
+    gait_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("legged_data/status/gait_type", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 0.7s
     timer_gait = this->create_wall_timer(
@@ -223,7 +223,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/about_go1"
     // a queue length of 10 is specified here for the topic
-    about_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/about_go1", 10);
+    about_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("legged_data/status/about_go1", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 60s
     timer_about = this->create_wall_timer(
@@ -233,7 +233,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msg/HighState to the topic "/legged_data/status/foot_raise_height"
     // a queue length of 10 is specified here for the topic
-    foot_raise_height_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("/legged_data/status/foot_raise_height", 10);
+    foot_raise_height_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("legged_data/status/foot_raise_height", 10);
     // Create a timer that will trigger calls to the method imu_callback
     // every 60s
     timer_foot_raise_height = this->create_wall_timer(
@@ -535,14 +535,14 @@ public:
     // of type geometry_msgs/msg/Twist published to the topic "/cmd_vel"
     // a queue length of 10 is specified here and a reference is given
     subscription_twist = this->create_subscription<geometry_msgs::msg::Twist>(
-        "/cmd_vel", 10, std::bind(&LeggedControl::twist_callback, this, std::placeholders::_1));
+        "cmd_vel", 10, std::bind(&LeggedControl::twist_callback, this, std::placeholders::_1));
 
 
     // Create the instance of the mode subscriber that will receive messages
     // of type go1_ros2_cpp/msg/HighCmd published to the topic "/cmd_mode"
     // a queue length of 10 is specified here and a reference is given
     subscription_mode = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
-        "/cmd_mode", 10, std::bind(&LeggedControl::cmdMode_callback, this, std::placeholders::_1));
+        "cmd_mode", 10, std::bind(&LeggedControl::cmdMode_callback, this, std::placeholders::_1));
 
 
     // Create the instance of the mode subscriber that will receive messages
@@ -550,7 +550,7 @@ public:
     // Only in Linear X & Y plane
     // a queue length of 10 is specified here and a reference is given
     subscription_twist_pos = this->create_subscription<geometry_msgs::msg::Twist>(
-      "/cmd_pos", 10, std::bind(&LeggedControl::cmdPos_callback, this, std::placeholders::_1));
+      "cmd_pos", 10, std::bind(&LeggedControl::cmdPos_callback, this, std::placeholders::_1));
     
 
 
@@ -558,7 +558,7 @@ public:
     // of type go1_ros2_cpp/msg/HighCmd published to the topic "/cmd_foot_raise_height"
     // a queue length of 10 is specified here and a reference is given
     subscription_foot_raise_height = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
-      "/cmd_foot_raise_height", 10, std::bind(&LeggedControl::cmdWalkHeight_callback, this, std::placeholders::_1));
+      "cmd_foot_raise_height", 10, std::bind(&LeggedControl::cmdWalkHeight_callback, this, std::placeholders::_1));
 
   }
 

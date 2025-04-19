@@ -112,6 +112,13 @@ ament_target_dependencies(face_light_controller rclcpp)
 ament_target_dependencies(stereo_camera rclcpp sensor_msgs)
 ament_target_dependencies(chase rclcpp std_msgs)
 
+# Hotfix for launch runtime linking error:
+# Source: https://cmake.org/cmake/help/latest/command/set_target_properties.html
+set_target_properties(face_light_controller PROPERTIES
+  INSTALL_RPATH "${CMAKE_SOURCE_DIR}/sdk/faceLightSDK_Nano/lib"
+)
+
+
 # Install includes before packages
 install(
   DIRECTORY include 
@@ -120,6 +127,12 @@ install(
   ${CMAKE_SOURCE_DIR}/sdk/UnitreecameraSDK/include
   #${CMAKE_SOURCE_DIR}/sdk/ultraSoundSDK_Nano
   DESTINATION include
+)
+
+# Install launch file
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
 )
 
 #
