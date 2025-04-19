@@ -544,12 +544,22 @@ public:
     subscription_mode = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
         "/cmd_mode", 10, std::bind(&LeggedControl::cmdMode_callback, this, std::placeholders::_1));
 
+
     // Create the instance of the mode subscriber that will receive messages
     // of type geometry_msgs/msg/Twist published to the topic "/cmd_mode"
     // Only in Linear X & Y plane
     // a queue length of 10 is specified here and a reference is given
     subscription_twist_pos = this->create_subscription<geometry_msgs::msg::Twist>(
       "/cmd_pos", 10, std::bind(&LeggedControl::cmdPos_callback, this, std::placeholders::_1));
+    
+
+
+    // Create the instance of the mode subscriber that will receive messages
+    // of type go1_ros2_cpp/msg/HighCmd published to the topic "/cmd_foot_raise_height"
+    // a queue length of 10 is specified here and a reference is given
+    subscription_foot_raise_height = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
+      "/cmd_foot_raise_height", 10, std::bind(&LeggedControl::cmdWalkHeight_callback, this, std::placeholders::_1));
+
   }
 
 private:
@@ -610,6 +620,22 @@ private:
   // Declaration of private fields used for subscriber
   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_twist_pos;
 
+
+
+  /*
+   * mode Data subscriber
+   * Takes HighCmd msg data and sends it via UDP to the robot
+   */
+  void cmdWalkHeight_callback(const go1_ros2_cpp::msg::HighCmd &msg)
+  {
+
+    udpLegged.cmd.footRaiseHeight = msg.foot_raise_height;
+
+    udpLegged.udp.SetSend(udpLegged.cmd);
+    udpLegged.UDPSend();
+  }
+  // Declaration of private fields used for subscriber
+  rclcpp::Subscription<go1_ros2_cpp::msg::HighCmd>::SharedPtr subscription_foot_raise_height;
 
 
 };
