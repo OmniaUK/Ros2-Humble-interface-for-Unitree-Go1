@@ -10,7 +10,7 @@ import launch_ros
 import launch_ros.actions
 import launch_testing.actions
 import rclpy
-from std_msgs.msg import Float32
+from go1_ros2_cpp.msg import HighCmd 
 from go1_ros2_cpp.msg import HighState
 from go1_ros2_cpp.msg import LED
 
@@ -96,6 +96,13 @@ class TestLeggedController(unittest.TestCase):
             10
         )
         
+        # Create a publisher to send twist messages
+        cmd_mode_data_publisher = self.node.create_publisher(
+            HighCmd,
+            "cmd_mode",
+            10
+        )
+        
         # Check if messages are being received
         try:
             end_time = time.time() + 10 # 10 seconds timeout
@@ -107,10 +114,26 @@ class TestLeggedController(unittest.TestCase):
             self.assertGreater(len(msgs_rx), 2, "Messages not publishing")
             self.assertEqual(msg.mode, 0, f"Expected mode=0 but got {msg.mode}") # Check if the message is being published with the correct data format
             
+            msgs_rx = [] # Reset the list to receive new messages 
             
+            # Send a command to change the mode
+            msg = HighCmd()
+            msg.mode = 1
             
+            #Check if the message data is being published correctly
+            end_time = time.time() + 10 # 10 seconds timeout
+            while time.time() < end_time:
+                cmd_mode_data_publisher.publish(msg)
+                rclpy.spin_once(self.node, timeout_sec=0.1) # wait for the message to be published
+                if len(msgs_rx) > 2:
+                    break
+
+            assert msg.mode == 1, f"Expected mode=1 but got {msg.mode}"
+            
+        
         finally:
             self.node.destroy_subscription(mode_status_subscriber)
+            self.node.destroy_publisher(cmd_mode_data_publisher)
             
     
     def test_face_light_controller(self, face_light_controller, proc_output):
