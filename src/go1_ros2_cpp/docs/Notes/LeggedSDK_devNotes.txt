@@ -2,7 +2,7 @@ This SDK was the the foundation of this project being succesfull.
 
 Extensive amounts of time were spent learning and reverse engineering aspects of this SDK where the included Documentation often fell short.
 
-Inital plan:
+Inital plan on investigation:
 Using the msg types from Ros-to-real package provided by unitree for running the go1 in a simulator I was going to map all the msg types to
  publishers and subscribers of various topics.
 
