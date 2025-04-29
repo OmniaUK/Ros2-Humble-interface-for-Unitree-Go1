@@ -65,7 +65,7 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 #include "unitree_legged_sdk/unitree_legged_sdk.h"
 
 // IP Address to Pi   (Default: WiFi - 192.168.12.1,   Ethernet - 192.168.123.161)
-const char *piAddress = "192.168.12.1";
+const char* piAddress = "192.168.12.1";
 
 // Namespace specified for simplfication when using chrono library
 using namespace UNITREE_LEGGED_SDK;
@@ -79,7 +79,7 @@ class UDPLegged
 {
 public: // <- Change to your robot model- Aliengo, A1, Go1 (Tested), B1
   UDPLegged(uint8_t level) : safe(LeggedType::Go1),
-                             udp(level, 8090, "192.168.12.1", 8082)
+                             udp(level, 8090, piAddress, 8082)
   {
     udp.InitCmdData(cmd);
   }
@@ -578,6 +578,7 @@ private:
     
 
     udpLegged.cmd.yawSpeed = msg.angular.z; // Rotation in rad/s
+
 
     udpLegged.udp.SetSend(udpLegged.cmd);
     udpLegged.UDPSend();
