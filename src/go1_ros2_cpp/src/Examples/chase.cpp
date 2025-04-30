@@ -59,7 +59,7 @@ public:
   : Node("example_publisher"), count_(0)
   {
     // Create the instance of the publisher that will publish messages
-    // of type std_msgs/mgs/UInt32 to the topic "/hello/world"
+    // of type go1_ros2_cpp/msgs/LED to the topic "/face/led"
     // a queue length of 10 is specified here for the topic
     publisher_ = this->create_publisher<go1_ros2_cpp::msg::LED>("/face/led", 10);
 
@@ -74,7 +74,7 @@ private:
   // at the specified intervals
   void timer_callback()
   {
-    //Create an instance of the UInt32 message type
+    //Create an instance of the LED message type
     auto message = go1_ros2_cpp::msg::LED();
 
     for (int i = 0; i < 12; i++)
@@ -94,9 +94,6 @@ private:
       publisher_->publish(message);
     }
     
-
-
-    //publish the message created above to the topic /hello/world
     
   }
 
