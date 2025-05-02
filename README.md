@@ -13,9 +13,9 @@ The goal of this software, as part of my University Major-Project, was to create
 My hopes were to aid my University to use the robot for research, but also allow those with the same hardware in industry/ at home, to have open-source access to a better option (with comprehensive documentation) that would allow for faster development using a familiar ROS2 Humble framework.
 
 With special thanks to:
-- Patricia Shaw
-- Tomos Fearn
-- Helen Miles
+- Dr. Patricia Shaw
+- Dr. Tomos Fearn
+- Dr. Helen Miles
 - Aberystwyth University
 
 # Dependencies
@@ -57,7 +57,7 @@ sudo ./b2 install
 
 - OpenCV2
 ```
-To Do
+pip install opencv-python
 ```
 - udev
 ```
@@ -66,7 +66,32 @@ sudo apt update
 sudo apt install libudev-dev
 ```
 # How to install
-To Do...
+- Install the package to your home directory.
+
+- Ensure all dependencies are installed
+
+- In the terminal navigate to the head directory
+```
+cd ~/Ros2-Humble-interface-for-Unitree-Go1
+```
+- Build the package
+```
+Colcon Build
+```
+
+- Source bash.rc
+```
+source install/setup.bash
+```
+
+- Connect to the Go1 wireless network
+
+- Run the package launch file
+```
+ros2 launch go1_ros2_cpp go1.launch.py
+```
+
+
 
 # Known issues
 ~ Package only builds on Intel systems - This is due to the hardcode for arm64 use. CMake wont allow me to use variables apparently...
