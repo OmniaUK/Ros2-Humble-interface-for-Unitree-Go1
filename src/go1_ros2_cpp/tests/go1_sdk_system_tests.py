@@ -10,6 +10,8 @@ import launch_ros
 import launch_ros.actions
 import launch_testing.actions
 import rclpy
+
+# msg imports
 from go1_ros2_cpp.msg import HighCmd 
 from go1_ros2_cpp.msg import HighState
 from go1_ros2_cpp.msg import LED
