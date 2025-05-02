@@ -57,6 +57,8 @@ About: A Ros publisher file that takes recived UDP data from a unitree Go1 to pu
 #include "go1_ros2_cpp/msg/bms_state.hpp"
 #include "go1_ros2_cpp/msg/high_state.hpp"
 #include "go1_ros2_cpp/msg/high_cmd.hpp"
+#include "go1_ros2_cpp/msg/motor_state.hpp"
+#include "go1_ros2_cpp/msg/motor_cmd.hpp"
 
 // Important: these includes should be reflected in the package.xml and CMakeLists.txt
 
@@ -235,10 +237,119 @@ public:
     // a queue length of 10 is specified here for the topic
     foot_raise_height_publisher = this->create_publisher<go1_ros2_cpp::msg::HighState>("legged_data/status/foot_raise_height", 10);
     // Create a timer that will trigger calls to the method imu_callback
-    // every 60s
+    // every 0.7s
     timer_foot_raise_height = this->create_wall_timer(
         700ms, std::bind(&LeggedDataRX::foot_raise_height_callback, this));
-  }
+
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_0"
+    // a queue length of 10 is specified here for the topic
+    motor_0_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_0", 10);
+    // Create a timer that will trigger calls to the method motor_0_callback
+    // every 200ms
+    timer_motor_0 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_0_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_1"
+    // a queue length of 10 is specified here for the topic
+    motor_1_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_1", 10);
+    // Create a timer that will trigger calls to the method motor_1_callback
+    // every 200ms
+    timer_motor_1 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_1_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_2"
+    // a queue length of 10 is specified here for the topic
+    motor_2_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_2", 10);
+    // Create a timer that will trigger calls to the method motor_2_callback
+    // every 200ms
+    timer_motor_2 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_2_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_3"
+    // a queue length of 10 is specified here for the topic
+    motor_3_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_3", 10);
+    // Create a timer that will trigger calls to the method motor_3_callback
+    // every 200ms
+    timer_motor_3 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_3_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_4"
+    // a queue length of 10 is specified here for the topic
+    motor_4_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_4", 10);
+    // Create a timer that will trigger calls to the method motor_4_callback
+    // every 200ms
+    timer_motor_4 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_4_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_5"
+    // a queue length of 10 is specified here for the topic
+    motor_5_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_5", 10);
+    // Create a timer that will trigger calls to the method motor_5_callback
+    // every 200ms
+    timer_motor_5 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_5_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_6"
+    // a queue length of 10 is specified here for the topic
+    motor_6_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_6", 10);
+    // Create a timer that will trigger calls to the method motor_6_callback
+    // every 200ms
+    timer_motor_6 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_6_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_7"
+    // a queue length of 10 is specified here for the topic
+    motor_7_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_7", 10);
+    // Create a timer that will trigger calls to the method motor_7_callback
+    // every 200ms
+    timer_motor_7 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_7_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_8"
+    // a queue length of 10 is specified here for the topic
+    motor_8_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_8", 10);
+    // Create a timer that will trigger calls to the method motor_8_callback
+    // every 200ms
+    timer_motor_8 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_8_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_9"
+    // a queue length of 10 is specified here for the topic
+    motor_9_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_9", 10);
+    // Create a timer that will trigger calls to the method motor_9_callback
+    // every 200ms
+    timer_motor_9 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_9_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_10"
+    // a queue length of 10 is specified here for the topic
+    motor_10_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_10", 10);
+    // Create a timer that will trigger calls to the method motor_10_callback
+    // every 200ms
+    timer_motor_10 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_10_callback, this));
+
+    // Create the instance of the publisher that will publish messages
+    // of type go1_ros2_cpp/msg/MotorState to the topic "legged_data/actuators/motor_11"
+    // a queue length of 10 is specified here for the topic
+    motor_11_publisher = this->create_publisher<go1_ros2_cpp::msg::MotorState>("legged_data/actuators/motor_11", 10);
+    // Create a timer that will trigger calls to the method motor_11_callback
+    // every 200ms
+    timer_motor_11 = this->create_wall_timer(
+        200ms, std::bind(&LeggedDataRX::motor_11_callback, this));
+      }
 
 
 // topic Callbacks
@@ -510,8 +621,303 @@ private:
   rclcpp::Publisher<go1_ros2_cpp::msg::HighState>::SharedPtr foot_raise_height_publisher;
 
 
+  /*
+  * Motor 0 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 0 data
+  */
+  void motor_0_callback()
+  {
+    // Create an instance of the HighState message type
+    auto message = go1_ros2_cpp::msg::MotorState();
+
+    // Set latest known motor status to msg
+    message.mode = udpLegged.state.motorState[0].mode;       
+    message.q = udpLegged.state.motorState[0].q;
+    message.dq = udpLegged.state.motorState[0].dq;              
+    message.ddq = udpLegged.state.motorState[0].ddq;
+    message.tau_est = udpLegged.state.motorState[0].tauEst;
+    message.q_raw = udpLegged.state.motorState[0].q_raw;
+    message.dq_raw = udpLegged.state.motorState[0].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[0].ddq_raw;
+    message.temperature = udpLegged.state.motorState[0].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_0
+    motor_0_publisher->publish(message);
+  }
+  // Declaration of private fields used for timer, publisher and counter
+  rclcpp::TimerBase::SharedPtr timer_motor_0;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_0_publisher;
+
+  /*
+  * Motor 1 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 1 data
+  */
+  void motor_1_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[1].mode;       
+    message.q = udpLegged.state.motorState[1].q;
+    message.dq = udpLegged.state.motorState[1].dq;              
+    message.ddq = udpLegged.state.motorState[1].ddq;
+    message.tau_est = udpLegged.state.motorState[1].tauEst;
+    message.q_raw = udpLegged.state.motorState[1].q_raw;
+    message.dq_raw = udpLegged.state.motorState[1].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[1].ddq_raw;
+    message.temperature = udpLegged.state.motorState[1].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_1
+    motor_1_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_1;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_1_publisher;
+
+  /*
+  * Motor 2 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 2 data
+  */
+  void motor_2_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[2].mode;       
+    message.q = udpLegged.state.motorState[2].q;
+    message.dq = udpLegged.state.motorState[2].dq;              
+    message.ddq = udpLegged.state.motorState[2].ddq;
+    message.tau_est = udpLegged.state.motorState[2].tauEst;
+    message.q_raw = udpLegged.state.motorState[2].q_raw;
+    message.dq_raw = udpLegged.state.motorState[2].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[2].ddq_raw;
+    message.temperature = udpLegged.state.motorState[2].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_2
+    motor_2_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_2;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_2_publisher;
+
+  /*
+  * Motor 3 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 3 data
+  */
+  void motor_3_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[3].mode;       
+    message.q = udpLegged.state.motorState[3].q;
+    message.dq = udpLegged.state.motorState[3].dq;              
+    message.ddq = udpLegged.state.motorState[3].ddq;
+    message.tau_est = udpLegged.state.motorState[3].tauEst;
+    message.q_raw = udpLegged.state.motorState[3].q_raw;
+    message.dq_raw = udpLegged.state.motorState[3].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[3].ddq_raw;
+    message.temperature = udpLegged.state.motorState[3].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_3
+    motor_3_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_3;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_3_publisher;
+
+  /*
+  * Motor 4 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 4 data
+  */
+  void motor_4_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[4].mode;       
+    message.q = udpLegged.state.motorState[4].q;
+    message.dq = udpLegged.state.motorState[4].dq;              
+    message.ddq = udpLegged.state.motorState[4].ddq;
+    message.tau_est = udpLegged.state.motorState[4].tauEst;
+    message.q_raw = udpLegged.state.motorState[4].q_raw;
+    message.dq_raw = udpLegged.state.motorState[4].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[4].ddq_raw;
+    message.temperature = udpLegged.state.motorState[4].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_4
+    motor_4_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_4;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_4_publisher;
+
+  /*
+  * Motor 5 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 5 data
+  */
+  void motor_5_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[5].mode;       
+    message.q = udpLegged.state.motorState[5].q;
+    message.dq = udpLegged.state.motorState[5].dq;              
+    message.ddq = udpLegged.state.motorState[5].ddq;
+    message.tau_est = udpLegged.state.motorState[5].tauEst;
+    message.q_raw = udpLegged.state.motorState[5].q_raw;
+    message.dq_raw = udpLegged.state.motorState[5].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[5].ddq_raw;
+    message.temperature = udpLegged.state.motorState[5].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_5
+    motor_5_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_5;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_5_publisher;
+
+  /*
+  * Motor 6 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 6 data
+  */
+  void motor_6_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[6].mode;       
+    message.q = udpLegged.state.motorState[6].q;
+    message.dq = udpLegged.state.motorState[6].dq;              
+    message.ddq = udpLegged.state.motorState[6].ddq;
+    message.tau_est = udpLegged.state.motorState[6].tauEst;
+    message.q_raw = udpLegged.state.motorState[6].q_raw;
+    message.dq_raw = udpLegged.state.motorState[6].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[6].ddq_raw;
+    message.temperature = udpLegged.state.motorState[6].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_6
+    motor_6_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_6;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_6_publisher;
+
+  /*
+  * Motor 7 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 7 data
+  */
+  void motor_7_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[7].mode;       
+    message.q = udpLegged.state.motorState[7].q;
+    message.dq = udpLegged.state.motorState[7].dq;              
+    message.ddq = udpLegged.state.motorState[7].ddq;
+    message.tau_est = udpLegged.state.motorState[7].tauEst;
+    message.q_raw = udpLegged.state.motorState[7].q_raw;
+    message.dq_raw = udpLegged.state.motorState[7].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[7].ddq_raw;
+    message.temperature = udpLegged.state.motorState[7].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_7
+    motor_7_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_7;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_7_publisher;
+
+  /*
+  * Motor 8 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 8 data
+  */
+  void motor_8_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[8].mode;       
+    message.q = udpLegged.state.motorState[8].q;
+    message.dq = udpLegged.state.motorState[8].dq;              
+    message.ddq = udpLegged.state.motorState[8].ddq;
+    message.tau_est = udpLegged.state.motorState[8].tauEst;
+    message.q_raw = udpLegged.state.motorState[8].q_raw;
+    message.dq_raw = udpLegged.state.motorState[8].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[8].ddq_raw;
+    message.temperature = udpLegged.state.motorState[8].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_8
+    motor_8_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_8;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_8_publisher;
+
+  /*
+  * Motor 9 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 9 data
+  */
+  void motor_9_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[9].mode;       
+    message.q = udpLegged.state.motorState[9].q;
+    message.dq = udpLegged.state.motorState[9].dq;              
+    message.ddq = udpLegged.state.motorState[9].ddq;
+    message.tau_est = udpLegged.state.motorState[9].tauEst;
+    message.q_raw = udpLegged.state.motorState[9].q_raw;
+    message.dq_raw = udpLegged.state.motorState[9].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[9].ddq_raw;
+    message.temperature = udpLegged.state.motorState[9].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_9
+    motor_9_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_9;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_9_publisher;
+
+  /*
+  * Motor 10 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 10 data
+  */
+  void motor_10_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[10].mode;       
+    message.q = udpLegged.state.motorState[10].q;
+    message.dq = udpLegged.state.motorState[10].dq;              
+    message.ddq = udpLegged.state.motorState[10].ddq;
+    message.tau_est = udpLegged.state.motorState[10].tauEst;
+    message.q_raw = udpLegged.state.motorState[10].q_raw;
+    message.dq_raw = udpLegged.state.motorState[10].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[10].ddq_raw;
+    message.temperature = udpLegged.state.motorState[10].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_10
+    motor_10_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_10;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_10_publisher;
+
+  /*
+  * Motor 11 status Data publisher
+  * Takes MotorStatus data and updates the msg with latest Motor 11 data
+  */
+  void motor_11_callback()
+  {
+    auto message = go1_ros2_cpp::msg::MotorState();
+    message.mode = udpLegged.state.motorState[11].mode;       
+    message.q = udpLegged.state.motorState[11].q;
+    message.dq = udpLegged.state.motorState[11].dq;              
+    message.ddq = udpLegged.state.motorState[11].ddq;
+    message.tau_est = udpLegged.state.motorState[11].tauEst;
+    message.q_raw = udpLegged.state.motorState[11].q_raw;
+    message.dq_raw = udpLegged.state.motorState[11].dq_raw;
+    message.ddq_raw = udpLegged.state.motorState[11].ddq_raw;
+    message.temperature = udpLegged.state.motorState[11].temperature;
+
+    // publish the message created above to the topic /legged_data/actuators/motor_11
+    motor_11_publisher->publish(message);
+  }
+  rclcpp::TimerBase::SharedPtr timer_motor_11;
+  rclcpp::Publisher<go1_ros2_cpp::msg::MotorState>::SharedPtr motor_11_publisher;
+
+
   size_t count_;
 };
+
+
+
+
+
+
+
+
+
+
+
+// This is a break in the code to allow for easy navigation
+
+
 
 
 
@@ -545,7 +951,7 @@ public:
         "cmd_mode", 10, std::bind(&LeggedControl::cmdMode_callback, this, std::placeholders::_1));
 
 
-    // Create the instance of the mode subscriber that will receive messages
+    // Create the instance of the cmd_pos subscriber that will receive messages
     // of type geometry_msgs/msg/Twist published to the topic "/cmd_mode"
     // Only in Linear X & Y plane
     // a queue length of 10 is specified here and a reference is given
@@ -554,11 +960,108 @@ public:
     
 
 
-    // Create the instance of the mode subscriber that will receive messages
+    // Create the instance of the cmd_foot_raise_height subscriber that will receive messages
     // of type go1_ros2_cpp/msg/HighCmd published to the topic "/cmd_foot_raise_height"
     // a queue length of 10 is specified here and a reference is given
     subscription_foot_raise_height = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
       "cmd_foot_raise_height", 10, std::bind(&LeggedControl::cmdWalkHeight_callback, this, std::placeholders::_1));
+
+      // Create the instance of the cmd_euler subscriber that will receive messages
+    // of type go1_ros2_cpp/msg/HighCmd published to the topic "/cmd_euler"
+    // a queue length of 10 is specified here and a reference is given
+    subscription_euler = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
+      "cmd_euler", 10, std::bind(&LeggedControl::cmdEuler_callback, this, std::placeholders::_1));
+
+
+/*
+
+CmdMotor feature currently disabled to do risks of damaging the robot. To be dicussed with Tomos Fearn
+
+*/
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_0"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_0 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_0", 10, std::bind(&LeggedControl::cmdMotor_0_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_1"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_1 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_1", 10, std::bind(&LeggedControl::cmdMotor_1_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_2"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_2 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_2", 10, std::bind(&LeggedControl::cmdMotor_2_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_3"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_3 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_3", 10, std::bind(&LeggedControl::cmdMotor_3_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_4"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_4 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_4", 10, std::bind(&LeggedControl::cmdMotor_4_callback, this, std::placeholders::_1));
+
+      
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_5"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_5 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_5", 10, std::bind(&LeggedControl::cmdMotor_5_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_6"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_6 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_6", 10, std::bind(&LeggedControl::cmdMotor_6_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_7"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_7 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_7", 10, std::bind(&LeggedControl::cmdMotor_7_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_8"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_8 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_8", 10, std::bind(&LeggedControl::cmdMotor_8_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_9"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_9 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_9", 10, std::bind(&LeggedControl::cmdMotor_9_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_10"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_10 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_10", 10, std::bind(&LeggedControl::cmdMotor_10_callback, this, std::placeholders::_1));
+
+
+    // // Create the instance of the cmd_actuators subscriber that will receive messages
+    // // of type go1_ros2_cpp/msg/MotorCmd published to the topic "/cmd_actuators/motor_11"
+    // // a queue length of 10 is specified here and a reference is given
+    // subscription_motor_11 = this->create_subscription<go1_ros2_cpp::msg::MotorCmd>(
+    //   "cmd_actuators/motor_11", 10, std::bind(&LeggedControl::cmdMotor_11_callback, this, std::placeholders::_1));
 
   }
 
@@ -606,7 +1109,7 @@ private:
 
 
   /*
-   * mode Data subscriber
+   * cmdPos Data subscriber
    * Takes HighCmd msg data and sends it via UDP to the robot
    */
   void cmdPos_callback(const geometry_msgs::msg::Twist &msg)
@@ -624,7 +1127,7 @@ private:
 
 
   /*
-   * mode Data subscriber
+   * Walk height Data subscriber
    * Takes HighCmd msg data and sends it via UDP to the robot
    */
   void cmdWalkHeight_callback(const go1_ros2_cpp::msg::HighCmd &msg)
@@ -638,6 +1141,282 @@ private:
   // Declaration of private fields used for subscriber
   rclcpp::Subscription<go1_ros2_cpp::msg::HighCmd>::SharedPtr subscription_foot_raise_height;
 
+
+  /*
+   * cmdEuler Data subscriber
+   * Takes HighCmd msg data and sends it via UDP to the robot
+   */
+  void cmdEuler_callback(const go1_ros2_cpp::msg::HighCmd &msg)
+  {
+
+    udpLegged.cmd.euler[0] = msg.euler[0];
+    udpLegged.cmd.euler[1] = msg.euler[1];
+    udpLegged.cmd.euler[2] = msg.euler[2];
+
+    udpLegged.udp.SetSend(udpLegged.cmd);
+    udpLegged.UDPSend();
+  }
+  // Declaration of private fields used for subscriber
+  rclcpp::Subscription<go1_ros2_cpp::msg::HighCmd>::SharedPtr subscription_euler;
+
+
+/*
+
+CmdMotor feature currently disabled to do risks of damaging the robot. To be dicussed with Tomos Fearn
+
+*/
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_0_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[0].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[0].q = msg.q;
+  //   udpLegged.cmd.motorCmd[0].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[0].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[0].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[0].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_0;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_1_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[1].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[1].q = msg.q;
+  //   udpLegged.cmd.motorCmd[1].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[1].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[1].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[1].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_1;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_2_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[2].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[2].q = msg.q;
+  //   udpLegged.cmd.motorCmd[2].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[2].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[2].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[2].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_2;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_3_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[3].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[3].q = msg.q;
+  //   udpLegged.cmd.motorCmd[3].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[3].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[3].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[3].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_3;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_4_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[4].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[4].q = msg.q;
+  //   udpLegged.cmd.motorCmd[4].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[4].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[4].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[4].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_4;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_5_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[5].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[5].q = msg.q;
+  //   udpLegged.cmd.motorCmd[5].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[5].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[5].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[5].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_5;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_6_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[6].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[6].q = msg.q;
+  //   udpLegged.cmd.motorCmd[6].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[6].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[6].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[6].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_6;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_7_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[7].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[7].q = msg.q;
+  //   udpLegged.cmd.motorCmd[7].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[7].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[7].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[7].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_7;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_8_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[8].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[8].q = msg.q;
+  //   udpLegged.cmd.motorCmd[8].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[8].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[8].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[8].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_8;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_9_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[9].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[9].q = msg.q;
+  //   udpLegged.cmd.motorCmd[9].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[9].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[9].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[9].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_9;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_10_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd.motorCmd[10].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[10].q = msg.q;
+  //   udpLegged.cmd.motorCmd[10].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[10].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[10].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[10].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_10;
+
+
+
+  // /*
+  // * MotorCmd Data subscriber
+  // * Takes MotorCmd msg data and sends it via UDP to the robot
+  // */
+  // void cmdMotor_11_callback(const go1_ros2_cpp::msg::MotorCmd &msg)
+  // {
+  //   udpLegged.cmd. .motorCmd[11].mode = msg.mode;
+  //   udpLegged.cmd.motorCmd[11].q = msg.q;
+  //   udpLegged.cmd.motorCmd[11].dq = msg.dq;
+  //   udpLegged.cmd.motorCmd[11].tau = msg.tau;
+  //   udpLegged.cmd.motorCmd[11].kp = msg.kp;
+  //   udpLegged.cmd.motorCmd[11].kd = msg.kd;
+
+  //   udpLegged.udp.SetSend(udpLegged.cmd);
+  //   udpLegged.UDPSend();
+  // }
+  // // Declaration of private fields used for subscriber
+  // rclcpp::Subscription<go1_ros2_cpp::msg::MotorCmd>::SharedPtr subscription_motor_11;
 
 };
 
