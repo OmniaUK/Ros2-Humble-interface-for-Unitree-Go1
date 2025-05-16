@@ -61,7 +61,7 @@ public:
     // Create the instance of the publisher that will publish messages
     // of type go1_ros2_cpp/msgs/LED to the topic "/face/led"
     // a queue length of 10 is specified here for the topic
-    publisher_ = this->create_publisher<go1_ros2_cpp::msg::LED>("/face/led", 10);
+    publisher_ = this->create_publisher<go1_ros2_cpp::msg::LED>("/go1_0000/face/led", 10);
 
     // Create a timer that will trigger calls to the method timer_callback
     // every 0.5s

@@ -955,7 +955,7 @@ public:
     // of type geometry_msgs/msg/Twist published to the topic "/cmd_mode"
     // Only in Linear X & Y plane
     // a queue length of 10 is specified here and a reference is given
-    subscription_twist_pos = this->create_subscription<geometry_msgs::msg::Twist>(
+    subscription_twist_pos = this->create_subscription<go1_ros2_cpp::msg::HighCmd>(
       "cmd_pos", 10, std::bind(&LeggedControl::cmdPos_callback, this, std::placeholders::_1));
     
 
@@ -1076,7 +1076,7 @@ private:
     RCLCPP_INFO(this->get_logger(), "I heard: msg.data=%f  and  %f", msg.linear.x, msg.angular.z);
     udpLegged.cmd.velocity[0] = msg.linear.x; // Forward / backward motion
     udpLegged.cmd.velocity[1] = msg.linear.y; // Left / right motion
-    udpLegged.cmd.velocity[3] = msg.linear.z; // Vertical / up & down
+    udpLegged.cmd.bodyHeight = msg.linear.z; // Vertical / up & down
 
     
 
@@ -1112,17 +1112,17 @@ private:
    * cmdPos Data subscriber
    * Takes HighCmd msg data and sends it via UDP to the robot
    */
-  void cmdPos_callback(const geometry_msgs::msg::Twist &msg)
+  void cmdPos_callback(const go1_ros2_cpp::msg::HighCmd &msg)
   {
 
-    udpLegged.cmd.position[0] = msg.linear.x;
-    udpLegged.cmd.position[1] = msg.linear.y;
+    udpLegged.cmd.position[0] = msg.position[0];
+    udpLegged.cmd.position[1] = msg.position[1];
 
     udpLegged.udp.SetSend(udpLegged.cmd);
     udpLegged.UDPSend();
   }
   // Declaration of private fields used for subscriber
-  rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_twist_pos;
+  rclcpp::Subscription<go1_ros2_cpp::msg::HighCmd>::SharedPtr subscription_twist_pos;
 
 
 
