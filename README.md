@@ -1,12 +1,13 @@
 # Ros2-Humble-interface-for-Unitree-Go1
 
-Version 0.1 - Private Alpha
+Version 0.1 - Public (Early Access) Alpha.
+Disclaimer - This project is still in progress and has many things I want to fix / change. It is however functional for the legged SDK
 
 # About
 This is a ROS2 Wraper package designed to replace the developer api from the (no longer developed or supported):
-- Unitree_Legged_SDK
-- UnitreecameraSDK
-- faceLightSDK
+- Unitree_Legged_SDK -  Working
+- UnitreecameraSDK - Use a ros2 Bridge
+- faceLightSDK - Working
 With some additional features added to allow for better software control over the robot.
 
 The goal of this software, as part of my University Major-Project, was to create a more standardized development API for use of the Unitree Go1 hardware.
